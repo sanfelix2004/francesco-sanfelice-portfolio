@@ -361,90 +361,17 @@ const PROFILE = {
 })();
 
 /* =====================================================
-   7. DOWNLOAD CV — generazione client-side
+   7. DOWNLOAD CV — PDF ufficiale
    ===================================================== */
+const CV_FILE = 'assets/SanfelicediBagnoliFrancesco-CV-ITA.pdf';
+
 function downloadCV() {
-  const cv = `============================================================
-FRANCESCO SANFELICE DI BAGNOLI
-${PROFILE.role}
-============================================================
-Email     : ${PROFILE.email}
-Località  : ${PROFILE.location}
-Inglese   : ${PROFILE.english}
-
-------------------------------------------------------------
-PROFILO
-------------------------------------------------------------
-Junior Software Engineer specializzato nella progettazione e
-sviluppo di microservizi backend scalabili in ecosistemi
-distribuiti e cloud-native. Esperienza diretta nello streaming
-OTT ad alto traffico (ecosistema Mediaset Infinity), forte
-orientamento per l'architettura di sistemi, l'Intelligenza
-Artificiale e l'ingegneria del software moderna.
-
-------------------------------------------------------------
-ESPERIENZA PROFESSIONALE
-------------------------------------------------------------
-Software Engineer — Fincons Group (Bari, Italia)
-[01/04/2025 – Attuale]
- * Progettazione e sviluppo di microservizi backend in Java e
-   framework Spring per l'ecosistema OTT di Mediaset (Infinity)
-   per Tenant ITA ed ESP.
- * Gestione, versionamento e documentazione di API RESTful
-   tramite OpenAPI 3.0/Swagger per assicurare coerenza,
-   retrocompatibilità e integrazione client.
- * Analisi, isolamento e risoluzione di bug complessi in
-   scenari distribuiti.
- * Testing manuale e di integrazione avanzato tramite Swagger
-   e curl.
-Stack: Java, Spring Boot, Spring Web, Spring Cloud, Spring Data
-JPA, Spring Security, Redis, Amazon DynamoDB, AWS SQS, AWS SNS,
-AWS Parameter Store, CVP, ThePlatform (MPX), Git, GitHub,
-Maven, Postman, JIRA/Confluence.
-
-------------------------------------------------------------
-ISTRUZIONE
-------------------------------------------------------------
-Laurea Triennale in Ingegneria Informatica e dell'Automazione
-Politecnico di Bari [2023 – In corso]
- Focus: algoritmi e strutture dati avanzate in Java,
- multithreading, pattern architetturali, sistemi dinamici e
- simulazioni Matlab.
-
-Diploma in Informatica e Telecomunicazioni
-IISS Volta De Gemmis, Bitonto [2018 – 2023] — 100/100 con Lode
- Focus: reti TCP/IP, routing, sicurezza, Linux, C/C++, Web dev.
-
-------------------------------------------------------------
-TECH STACK
-------------------------------------------------------------
-Backend & Core : Java (Spring Boot, Spring Cloud, JPA,
-                 Security), C, C++, Python, OpenAPI 3.0 / REST
-                 API, Maven
-Cloud & Infra  : AWS (SQS, SNS, DynamoDB, Parameter Store),
-                 Redis, PostgreSQL, SQL & NoSQL, Docker,
-                 Linux (Ubuntu/Kali)
-Frontend       : JavaScript, TypeScript, HTML5/CSS3, Angular,
-                 React, Flutter & Dart
-
-------------------------------------------------------------
-CERTIFICAZIONI
-------------------------------------------------------------
- * Cambridge English B2
- * Cisco CCNA: Programming Essentials in C++
- * Cisco Introduction to Cybersecurity
- * Cisco NDG Linux Unhatched
- * Cisco Introduction to Packet Tracer
-============================================================`;
-  const blob = new Blob([cv], { type: 'text/plain;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url;
-  a.download = 'CV_Francesco_Sanfelice_di_Bagnoli.txt';
+  a.href = CV_FILE;
+  a.download = 'SanfelicediBagnoliFrancesco-CV-ITA.pdf';
   document.body.appendChild(a);
   a.click();
   a.remove();
-  URL.revokeObjectURL(url);
 }
 document.getElementById('hero-download-cv').addEventListener('click', downloadCV);
 document.getElementById('footer-download-cv').addEventListener('click', downloadCV);
@@ -510,7 +437,7 @@ document.getElementById('footer-download-cv').addEventListener('click', download
     ],
     'download-cv': () => {
       downloadCV();
-      return ['<span class="c-ok">[ OK ]</span> Trasferimento CV avviato → CV_Francesco_Sanfelice_di_Bagnoli.txt'];
+      return ['<span class="c-ok">[ OK ]</span> Trasferimento CV avviato → SanfelicediBagnoliFrancesco-CV-ITA.pdf'];
     },
     clear: () => {
       output.innerHTML = '';

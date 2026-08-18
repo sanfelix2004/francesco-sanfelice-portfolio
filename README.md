@@ -32,7 +32,7 @@ python3 -m http.server 8000
 | Tech Stack Matrix | Bento grid con tilt 3D, glow reattivo al cursore, radar canvas, skill bar animate |
 | Mission Logs | Timeline verticale stile pipeline con metriche animate e tag tecnologici |
 | Console interattiva | Comandi: `help`, `whoami`, `skills`, `experience`, `education`, `certs`, `contact`, `download-cv`, `clear` |
-| Action Bar | Pulsanti magnetici con micro-suoni WebAudio, mailto diretto, download CV client-side |
+| Action Bar | Pulsanti magnetici con micro-suoni WebAudio, mailto diretto, download del CV in PDF |
 
 ## Contatti
 
