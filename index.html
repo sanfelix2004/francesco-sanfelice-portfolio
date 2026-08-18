@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Francesco Sanfelice di Bagnoli — Junior Software Engineer | Backend & Cloud</title>
+  <meta name="description" content="Junior Software Engineer specializzato in microservizi backend scalabili Java/Spring/AWS. Esperienza su streaming OTT ad alto traffico (Mediaset Infinity)." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            space: '#08080d',
+            panel: '#0d0d16',
+            neon: { cyan: '#00f2fe', blue: '#4facfe', violet: '#7f00ff' },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="bg-space text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-neon-cyan/30 selection:text-white">
+
+  <!-- ===== BACKGROUND ENGINE (particelle + griglia 3D) ===== -->
+  <canvas id="bg-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+  <div class="fixed inset-0 z-0 pointer-events-none bg-gradient-to-b from-transparent via-transparent to-space"></div>
+  <div id="scanline" class="fixed inset-0 z-0 pointer-events-none"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="fixed top-0 inset-x-0 z-50">
+    <nav class="glass mx-auto mt-4 max-w-6xl rounded-2xl px-5 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3 group">
+        <div class="hud-logo grid place-items-center w-9 h-9 rounded-lg font-mono text-sm font-bold text-neon-cyan">FS</div>
+        <span class="font-mono text-sm tracking-widest text-slate-400 group-hover:text-neon-cyan transition-colors hidden sm:inline">sanfelice<span class="text-neon-cyan">.dev</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 font-mono text-xs tracking-widest text-slate-400">
+        <a href="#stack" class="nav-link">// STACK</a>
+        <a href="#missions" class="nav-link">// MISSION_LOGS</a>
+        <a href="#console" class="nav-link">// CONSOLE</a>
+        <a href="#contact" class="nav-link">// CONTACT</a>
+      </div>
+      <a href="mailto:sanfelicefrancesco004@gmail.com" class="magnetic btn-neon font-mono text-xs px-4 py-2 rounded-lg" data-sfx>
+        <i data-lucide="send" class="w-3.5 h-3.5 inline -mt-0.5"></i> HIRE_ME
+      </a>
+    </nav>
+  </header>
+
+  <main id="top" class="relative z-10">
+
+    <!-- ===== HERO ===== -->
+    <section class="min-h-screen flex items-center pt-28 pb-16">
+      <div class="mx-auto max-w-6xl px-6 w-full grid lg:grid-cols-2 gap-12 items-center">
+
+        <!-- Left: identity -->
+        <div class="reveal">
+          <div class="status-badge inline-flex items-center gap-2.5 rounded-full px-4 py-1.5 font-mono text-[11px] tracking-[0.2em] text-neon-cyan mb-7">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-neon-cyan"></span>
+            </span>
+            STATUS: AVAILABLE FOR HIGH-IMPACT ROLES
+          </div>
+
+          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.02] tracking-tight">
+            <span class="shimmer-text">Francesco</span><br />
+            <span class="shimmer-text">Sanfelice</span><br />
+            <span class="text-slate-500 text-3xl sm:text-4xl font-bold">di Bagnoli</span>
+          </h1>
+
+          <p class="mt-6 font-mono text-sm text-neon-blue tracking-wide">
+            Junior Software Engineer <span class="text-slate-600">|</span> Backend &amp; Cloud Systems
+            <span class="text-slate-600">|</span> Java / Spring / AWS
+            <span class="text-slate-600">|</span> AI &amp; Distributed Systems Enthusiast
+          </p>
+
+          <p class="mt-5 text-slate-400 leading-relaxed max-w-xl">
+            Junior Software Engineer specializzato nella progettazione e sviluppo di microservizi backend scalabili
+            in ecosistemi distribuiti e cloud-native. Esperienza diretta nello streaming OTT ad alto traffico
+            (ecosistema <span class="text-slate-200 font-medium">Mediaset Infinity</span>), forte orientamento per
+            l'architettura di sistemi, l'Intelligenza Artificiale e l'ingegneria del software moderna.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a href="mailto:sanfelicefrancesco004@gmail.com" class="magnetic btn-neon-solid px-6 py-3 rounded-xl font-semibold text-sm" data-sfx>
+              <i data-lucide="mail" class="w-4 h-4 inline -mt-0.5 mr-1"></i> Contattami
+            </a>
+            <button id="hero-download-cv" class="magnetic btn-neon px-6 py-3 rounded-xl font-mono text-sm" data-sfx>
+              <i data-lucide="file-down" class="w-4 h-4 inline -mt-0.5 mr-1"></i> download-cv
+            </button>
+            <a href="#console" class="magnetic px-5 py-3 rounded-xl font-mono text-sm text-slate-400 hover:text-neon-cyan transition-colors" data-sfx>
+              <i data-lucide="terminal" class="w-4 h-4 inline -mt-0.5 mr-1"></i> apri console_
+            </a>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-slate-500">
+            <span><i data-lucide="map-pin" class="w-3.5 h-3.5 inline -mt-0.5 text-neon-violet"></i> Giovinazzo (Bari), Italia</span>
+            <span><i data-lucide="languages" class="w-3.5 h-3.5 inline -mt-0.5 text-neon-violet"></i> Inglese B2 — Cambridge Certified</span>
+          </div>
+        </div>
+
+        <!-- Right: boot terminal -->
+        <div class="reveal" style="--reveal-delay:.15s">
+          <div class="terminal-window glass rounded-2xl overflow-hidden">
+            <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-white/[0.02]">
+              <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
+              <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
+              <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
+              <span class="ml-3 font-mono text-[11px] text-slate-500 tracking-widest">fsanfelice@cyber-engine: ~/boot</span>
+            </div>
+            <div id="boot-terminal" class="p-5 font-mono text-[13px] leading-relaxed h-[340px] overflow-hidden text-slate-300"></div>
+          </div>
+          <p class="mt-3 text-center font-mono text-[11px] text-slate-600 tracking-widest">// SYSTEM BOOT SEQUENCE — PROFILE v2026.08</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TECH STACK MATRIX ===== -->
+    <section id="stack" class="py-24">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="section-head reveal">
+          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">01 // SYSTEM CAPABILITIES</span>
+          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Tech Stack Matrix</h2>
+          <p class="mt-3 text-slate-500 max-w-2xl">Moduli tecnologici caricati e operativi. Passa il cursore sulle celle per l'analisi HUD.</p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-6 gap-5">
+
+          <!-- Backend & Core -->
+          <div class="tilt bento md:col-span-4 reveal" data-glow="#00f2fe">
+            <div class="bento-inner p-7">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="icon-chip text-neon-cyan"><i data-lucide="server" class="w-5 h-5"></i></div>
+                <h3 class="font-bold text-lg text-white">Backend &amp; Core</h3>
+                <span class="ml-auto font-mono text-[10px] text-neon-cyan/70 tracking-widest">MODULE: PRIMARY</span>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="chip chip-cyan">Java</span>
+                <span class="chip chip-cyan">Spring Boot</span>
+                <span class="chip chip-cyan">Spring Cloud</span>
+                <span class="chip chip-cyan">Spring Data JPA</span>
+                <span class="chip chip-cyan">Spring Security</span>
+                <span class="chip chip-cyan">OpenAPI 3.0 / REST API</span>
+                <span class="chip chip-cyan">Maven</span>
+                <span class="chip chip-cyan">C</span>
+                <span class="chip chip-cyan">C++</span>
+                <span class="chip chip-cyan">Python</span>
+              </div>
+              <div class="mt-6 skill-bars space-y-3 font-mono text-[11px]">
+                <div><div class="flex justify-between text-slate-500 mb-1"><span>JAVA / SPRING ECOSYSTEM</span><span class="text-neon-cyan">██ 92%</span></div><div class="bar"><span style="--w:92%"></span></div></div>
+                <div><div class="flex justify-between text-slate-500 mb-1"><span>REST API DESIGN / OPENAPI</span><span class="text-neon-cyan">██ 88%</span></div><div class="bar"><span style="--w:88%"></span></div></div>
+                <div><div class="flex justify-between text-slate-500 mb-1"><span>C / C++ / PYTHON</span><span class="text-neon-cyan">██ 74%</span></div><div class="bar"><span style="--w:74%"></span></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cloud, DB & Infra -->
+          <div class="tilt bento md:col-span-2 md:row-span-2 reveal" data-glow="#7f00ff" style="--reveal-delay:.1s">
+            <div class="bento-inner p-7 h-full">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="icon-chip text-neon-violet"><i data-lucide="cloud" class="w-5 h-5"></i></div>
+                <h3 class="font-bold text-lg text-white">Cloud, Database<br/>&amp; Infrastruttura</h3>
+              </div>
+              <ul class="space-y-3 font-mono text-[12.5px] text-slate-400">
+                <li class="stack-li"><i data-lucide="box" class="w-3.5 h-3.5 text-neon-violet"></i> AWS SQS · SNS</li>
+                <li class="stack-li"><i data-lucide="database" class="w-3.5 h-3.5 text-neon-violet"></i> Amazon DynamoDB</li>
+                <li class="stack-li"><i data-lucide="key-round" class="w-3.5 h-3.5 text-neon-violet"></i> AWS Parameter Store</li>
+                <li class="stack-li"><i data-lucide="zap" class="w-3.5 h-3.5 text-neon-violet"></i> Redis</li>
+                <li class="stack-li"><i data-lucide="database-zap" class="w-3.5 h-3.5 text-neon-violet"></i> PostgreSQL · SQL &amp; NoSQL</li>
+                <li class="stack-li"><i data-lucide="container" class="w-3.5 h-3.5 text-neon-violet"></i> Docker</li>
+                <li class="stack-li"><i data-lucide="terminal" class="w-3.5 h-3.5 text-neon-violet"></i> Linux (Ubuntu / Kali)</li>
+              </ul>
+              <div class="mt-6 radar-wrap">
+                <canvas id="radar-canvas" width="260" height="260" class="mx-auto"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frontend & Mobile -->
+          <div class="tilt bento md:col-span-2 reveal" data-glow="#4facfe" style="--reveal-delay:.2s">
+            <div class="bento-inner p-7">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="icon-chip text-neon-blue"><i data-lucide="smartphone" class="w-5 h-5"></i></div>
+                <h3 class="font-bold text-lg text-white">Frontend &amp; Mobile</h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="chip chip-blue">JavaScript</span>
+                <span class="chip chip-blue">TypeScript</span>
+                <span class="chip chip-blue">HTML5 / CSS3</span>
+                <span class="chip chip-blue">Angular</span>
+                <span class="chip chip-blue">React</span>
+                <span class="chip chip-blue">Flutter &amp; Dart</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Architecture & Tools -->
+          <div class="tilt bento md:col-span-2 reveal" data-glow="#00f2fe" style="--reveal-delay:.25s">
+            <div class="bento-inner p-7">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="icon-chip text-neon-cyan"><i data-lucide="git-branch" class="w-5 h-5"></i></div>
+                <h3 class="font-bold text-lg text-white">Architecture &amp; Tools</h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="chip chip-cyan">Microservizi</span>
+                <span class="chip chip-cyan">Sistemi Distribuiti</span>
+                <span class="chip chip-cyan">Git / GitHub</span>
+                <span class="chip chip-cyan">Postman</span>
+                <span class="chip chip-cyan">Swagger</span>
+                <span class="chip chip-cyan">JIRA / Confluence</span>
+                <span class="chip chip-cyan">CVP</span>
+                <span class="chip chip-cyan">ThePlatform (MPX)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certificazioni -->
+          <div class="tilt bento md:col-span-6 reveal" data-glow="#7f00ff" style="--reveal-delay:.3s">
+            <div class="bento-inner p-7">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="icon-chip text-neon-violet"><i data-lucide="badge-check" class="w-5 h-5"></i></div>
+                <h3 class="font-bold text-lg text-white">Certificazioni</h3>
+                <span class="ml-auto font-mono text-[10px] text-neon-violet/70 tracking-widest">VERIFIED CREDENTIALS</span>
+              </div>
+              <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3 font-mono text-[12px]">
+                <div class="cert-card"><i data-lucide="graduation-cap" class="w-4 h-4 text-neon-cyan"></i> Cambridge English B2</div>
+                <div class="cert-card"><i data-lucide="code-2" class="w-4 h-4 text-neon-cyan"></i> Cisco CCNA: Programming Essentials in C++</div>
+                <div class="cert-card"><i data-lucide="shield-check" class="w-4 h-4 text-neon-cyan"></i> Cisco Introduction to Cybersecurity</div>
+                <div class="cert-card"><i data-lucide="terminal-square" class="w-4 h-4 text-neon-cyan"></i> Cisco NDG Linux Unhatched</div>
+                <div class="cert-card"><i data-lucide="network" class="w-4 h-4 text-neon-cyan"></i> Cisco Introduction to Packet Tracer</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MISSION LOGS (TIMELINE) ===== -->
+    <section id="missions" class="py-24">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="section-head reveal">
+          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">02 // DEPLOYMENT HISTORY</span>
+          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Mission Logs</h2>
+          <p class="mt-3 text-slate-500 max-w-2xl">Pipeline cronologica delle missioni professionali e accademiche.</p>
+        </div>
+
+        <div class="timeline mt-16 relative">
+
+          <!-- Fincons -->
+          <article class="tl-item reveal">
+            <div class="tl-node tl-node-active"><i data-lucide="rocket" class="w-4 h-4"></i></div>
+            <div class="tilt tl-card glass rounded-2xl p-7" data-glow="#00f2fe">
+              <div class="flex flex-wrap items-center gap-3 mb-1">
+                <span class="font-mono text-[10px] tracking-widest px-2.5 py-1 rounded-md bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30">MISSION: ACTIVE</span>
+                <span class="font-mono text-xs text-slate-500">01/04/2025 — Attuale</span>
+              </div>
+              <h3 class="text-2xl font-bold text-white mt-2">Software Engineer</h3>
+              <p class="font-mono text-sm text-neon-blue mt-0.5">Fincons Group — Bari, Italia</p>
+
+              <div class="grid sm:grid-cols-3 gap-3 mt-5 font-mono text-center">
+                <div class="metric"><span class="metric-value" data-count="2">0</span><span class="metric-label">TENANT OTT (ITA · ESP)</span></div>
+                <div class="metric"><span class="metric-value" data-count="100" data-suffix="%">0</span><span class="metric-label">API DOCUMENTATE — OPENAPI 3.0</span></div>
+                <div class="metric"><span class="metric-value" data-count="24" data-suffix="/7">0</span><span class="metric-label">PIATTAFORMA STREAMING HIGH-TRAFFIC</span></div>
+              </div>
+
+              <ul class="mt-5 space-y-2.5 text-slate-400 text-sm leading-relaxed list-none">
+                <li class="log-li">Progettazione e sviluppo di microservizi backend in <strong class="text-slate-200">Java</strong> e framework <strong class="text-slate-200">Spring</strong> per l'ecosistema OTT di Mediaset (<strong class="text-slate-200">Infinity</strong>) per i Tenant ITA ed ESP.</li>
+                <li class="log-li">Gestione, versionamento e documentazione di API RESTful tramite <strong class="text-slate-200">OpenAPI 3.0 / Swagger</strong> per assicurare coerenza, retrocompatibilità e integrazione client.</li>
+                <li class="log-li">Analisi, isolamento e risoluzione di bug complessi in scenari distribuiti ad alto traffico.</li>
+                <li class="log-li">Testing manuale e di integrazione avanzato tramite Swagger e curl.</li>
+              </ul>
+
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="chip chip-cyan">Java</span><span class="chip chip-cyan">Spring Boot</span><span class="chip chip-cyan">Spring Web</span><span class="chip chip-cyan">Spring Cloud</span><span class="chip chip-cyan">Spring Data JPA</span><span class="chip chip-cyan">Spring Security</span><span class="chip chip-violet">Redis</span><span class="chip chip-violet">DynamoDB</span><span class="chip chip-violet">AWS SQS</span><span class="chip chip-violet">AWS SNS</span><span class="chip chip-violet">AWS Parameter Store</span><span class="chip chip-blue">CVP</span><span class="chip chip-blue">ThePlatform (MPX)</span><span class="chip chip-blue">Git / GitHub</span><span class="chip chip-blue">Maven</span><span class="chip chip-blue">Postman</span><span class="chip chip-blue">JIRA / Confluence</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Politecnico -->
+          <article class="tl-item reveal">
+            <div class="tl-node"><i data-lucide="graduation-cap" class="w-4 h-4"></i></div>
+            <div class="tilt tl-card glass rounded-2xl p-7" data-glow="#4facfe">
+              <div class="flex flex-wrap items-center gap-3 mb-1">
+                <span class="font-mono text-[10px] tracking-widest px-2.5 py-1 rounded-md bg-neon-blue/10 text-neon-blue border border-neon-blue/30">EDUCATION: IN PROGRESS</span>
+                <span class="font-mono text-xs text-slate-500">2023 — In corso</span>
+              </div>
+              <h3 class="text-2xl font-bold text-white mt-2">Laurea Triennale — Ingegneria Informatica e dell'Automazione</h3>
+              <p class="font-mono text-sm text-neon-blue mt-0.5">Politecnico di Bari</p>
+              <p class="mt-4 text-slate-400 text-sm leading-relaxed">
+                Focus: algoritmi e strutture dati avanzate in Java, multithreading, pattern architetturali,
+                sistemi dinamici e simulazioni Matlab.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="chip chip-blue">Algoritmi &amp; Strutture Dati</span><span class="chip chip-blue">Java Multithreading</span><span class="chip chip-blue">Pattern Architetturali</span><span class="chip chip-blue">Sistemi Dinamici</span><span class="chip chip-blue">Matlab</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Diploma -->
+          <article class="tl-item reveal">
+            <div class="tl-node"><i data-lucide="award" class="w-4 h-4"></i></div>
+            <div class="tilt tl-card glass rounded-2xl p-7" data-glow="#7f00ff">
+              <div class="flex flex-wrap items-center gap-3 mb-1">
+                <span class="font-mono text-[10px] tracking-widest px-2.5 py-1 rounded-md bg-neon-violet/10 text-[#b366ff] border border-neon-violet/40">MISSION: COMPLETED — 100/100 CON LODE</span>
+                <span class="font-mono text-xs text-slate-500">2018 — 2023</span>
+              </div>
+              <h3 class="text-2xl font-bold text-white mt-2">Diploma — Informatica e Telecomunicazioni</h3>
+              <p class="font-mono text-sm text-neon-blue mt-0.5">IISS Volta De Gemmis — Bitonto</p>
+              <p class="mt-4 text-slate-400 text-sm leading-relaxed">
+                Focus: reti di calcolatori TCP/IP, routing, sicurezza, Linux, C/C++, sviluppo web.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="chip chip-violet">TCP/IP &amp; Routing</span><span class="chip chip-violet">Network Security</span><span class="chip chip-violet">Linux</span><span class="chip chip-violet">C / C++</span><span class="chip chip-violet">Web Dev</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INTERACTIVE CONSOLE ===== -->
+    <section id="console" class="py-24">
+      <div class="mx-auto max-w-4xl px-6">
+        <div class="section-head reveal text-center">
+          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">03 // DIRECT ACCESS</span>
+          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Console Interattiva</h2>
+          <p class="mt-3 text-slate-500">Interroga direttamente il sistema. Digita <code class="text-neon-cyan">help</code> per la lista dei comandi.</p>
+        </div>
+
+        <div class="terminal-window glass rounded-2xl overflow-hidden mt-10 reveal">
+          <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-white/[0.02]">
+            <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
+            <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
+            <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
+            <span class="ml-3 font-mono text-[11px] text-slate-500 tracking-widest">guest@sanfelice.dev: ~/console — zsh</span>
+            <span class="ml-auto font-mono text-[10px] text-neon-cyan/60 tracking-widest hidden sm:inline">ENCRYPTED CHANNEL ●</span>
+          </div>
+          <div id="console-body" class="p-5 font-mono text-[13px] leading-relaxed h-[380px] overflow-y-auto cursor-text">
+            <div id="console-output"></div>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="text-neon-cyan shrink-0">guest@sanfelice.dev:~$</span>
+              <div class="relative flex-1">
+                <input id="console-input" type="text" autocomplete="off" spellcheck="false"
+                       class="bg-transparent outline-none border-none w-full text-slate-100 caret-transparent font-mono text-[13px]" />
+                <span id="console-cursor" class="term-cursor absolute top-1/2 -translate-y-1/2 left-0"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT / ACTION BAR ===== -->
+    <section id="contact" class="py-24 pb-32">
+      <div class="mx-auto max-w-4xl px-6 text-center">
+        <div class="glass rounded-3xl p-10 sm:p-14 reveal contact-panel" data-glow="#00f2fe">
+          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">04 // ESTABLISH CONNECTION</span>
+          <h2 class="mt-3 text-4xl sm:text-5xl font-black shimmer-text inline-block">Inizializza il Contatto</h2>
+          <p class="mt-4 text-slate-400 max-w-xl mx-auto">
+            Disponibile per ruoli ad alto impatto su backend, cloud e sistemi distribuiti.
+            Canale diretto sempre operativo.
+          </p>
+
+          <div class="mt-9 flex flex-wrap justify-center gap-4">
+            <a href="mailto:sanfelicefrancesco004@gmail.com?subject=Opportunit%C3%A0%20professionale%20%E2%80%94%20High-Impact%20Role"
+               class="magnetic btn-neon-solid px-8 py-4 rounded-xl font-semibold" data-sfx>
+              <i data-lucide="mail" class="w-4 h-4 inline -mt-0.5 mr-1.5"></i> sanfelicefrancesco004@gmail.com
+            </a>
+            <button id="footer-download-cv" class="magnetic btn-neon px-8 py-4 rounded-xl font-mono text-sm" data-sfx>
+              <i data-lucide="file-down" class="w-4 h-4 inline -mt-0.5 mr-1.5"></i> download-cv
+            </button>
+          </div>
+
+          <div class="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-2 font-mono text-xs text-slate-500">
+            <span><i data-lucide="map-pin" class="w-3.5 h-3.5 inline -mt-0.5 text-neon-cyan"></i> Giovinazzo (Bari), Italia</span>
+            <span><i data-lucide="languages" class="w-3.5 h-3.5 inline -mt-0.5 text-neon-cyan"></i> EN B2 — Cambridge</span>
+            <span><i data-lucide="signal" class="w-3.5 h-3.5 inline -mt-0.5 text-neon-cyan"></i> UPLINK: STABLE</span>
+          </div>
+        </div>
+
+        <footer class="mt-14 font-mono text-[11px] text-slate-600 tracking-widest">
+          © 2026 FRANCESCO SANFELICE DI BAGNOLI — BUILT WITH <span class="text-neon-cyan">JAVA-GRADE PRECISION</span> &amp; VANILLA JS
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
