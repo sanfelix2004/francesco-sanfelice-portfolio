@@ -40,16 +40,14 @@ export const tools = [
   'Python',
 ]
 
-/** Organizations / platforms (tech-only) */
-export const brands = [
-  'Fincons Group',
-  'Mediaset Infinity',
-  'AWS',
-  'Corner Pub',
-  'Cisco Academy',
-  'Politecnico di Bari',
-  'Uni Marconi',
-  'GitHub',
+/** Certifications from CV */
+export const certifications = [
+  'Cambridge English B2',
+  'Cisco CPA — Programming Essentials in C++',
+  'Cisco Introduction to Cybersecurity',
+  'Cisco NDG Linux Unhatched',
+  'Cisco Introduction to Packet Tracer',
+  'Cisco Entrepreneurship',
 ]
 
 /**

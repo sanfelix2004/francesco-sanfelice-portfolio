@@ -1,5 +1,5 @@
 import Reveal from './Reveal'
-import { brands, profile } from '../data/profile'
+import { certifications, profile } from '../data/profile'
 
 export default function About() {
   return (
@@ -16,13 +16,19 @@ export default function About() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.12} className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 md:gap-4">
-          {brands.map((brand) => (
+        <Reveal delay={0.1}>
+          <h3 className="mt-10 mb-4 text-sm font-bold uppercase tracking-[0.18em] text-accent">
+            Certifications
+          </h3>
+        </Reveal>
+
+        <Reveal delay={0.12} className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 md:gap-4">
+          {certifications.map((cert) => (
             <div
-              key={brand}
-              className="rounded-xl border border-white/8 bg-white/[0.03] px-3 py-4 text-center text-xs font-semibold uppercase tracking-wider text-white/35 sm:text-sm"
+              key={cert}
+              className="rounded-xl border border-accent/20 bg-white/[0.04] px-4 py-4 text-center text-sm font-semibold leading-snug text-white/85"
             >
-              {brand}
+              {cert}
             </div>
           ))}
         </Reveal>
