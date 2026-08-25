@@ -1,218 +1,598 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Francesco Sanfelice di Bagnoli — Curriculum Vitae</title>
-  <meta name="description" content="Curriculum di Francesco Sanfelice di Bagnoli, Software Engineer (Java, Spring, AWS). Esperienza su microservizi OTT Mediaset Infinity." />
+  <title>Francesco Sanfelice di Bagnoli — Software Engineer</title>
+  <meta name="description" content="Francesco Sanfelice di Bagnoli — Junior Software Engineer. Backend, Cloud, Java/Spring/AWS, AI & distributed systems." />
+  <meta name="theme-color" content="#0a1a14" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #07140f;
+      --bg-2: #0c1f17;
+      --panel: #10261c;
+      --line: rgba(180, 255, 120, 0.14);
+      --text: #f2f7f3;
+      --muted: #9bb3a5;
+      --lime: #b8ff3c;
+      --lime-deep: #8fd416;
+      --silver: linear-gradient(180deg, #ffffff 0%, #c8d0d6 45%, #8e98a1 100%);
+      --font: "Outfit", system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(ellipse 70% 45% at 50% 0%, rgba(184, 255, 60, 0.08), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(40, 120, 80, 0.18), transparent 50%),
+        linear-gradient(180deg, #0a1a14 0%, var(--bg) 40%, #050d0a 100%);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font: inherit; }
+
+    .wrap {
+      width: min(1120px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    /* Top pills */
+    .topbar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding: 1.25rem 0 0.5rem;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.55rem 1rem 0.55rem 0.55rem;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: border-color .2s, transform .2s, background .2s;
+    }
+    .pill:hover {
+      border-color: var(--lime);
+      background: rgba(184, 255, 60, 0.06);
+      transform: translateY(-1px);
+    }
+    .pill-ico {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--lime);
+      color: #0a1a14;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 1.5rem 0 3rem;
+      text-align: center;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr minmax(240px, 420px) 1fr;
+      align-items: center;
+      gap: 1rem;
+      min-height: 68vh;
+    }
+    .hero-side {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+    .hero-side.left {
+      text-align: right;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      justify-self: end;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: var(--text);
+      opacity: 0.85;
+    }
+    .hero-side.right {
+      text-align: left;
+      max-width: 18rem;
+      justify-self: start;
+    }
+    .hero-avatar-wrap {
+      position: relative;
+      justify-self: center;
+      width: min(100%, 420px);
+    }
+    .hero-avatar {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 1.5rem;
+      filter: drop-shadow(0 30px 60px rgba(0,0,0,0.45));
+    }
+    .hero-name {
+      position: absolute;
+      left: 50%;
+      bottom: 12%;
+      transform: translateX(-50%);
+      width: 110%;
+      margin: 0;
+      font-size: clamp(2.4rem, 8vw, 4.6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      text-transform: uppercase;
+      background: var(--silver);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 8px 30px rgba(0,0,0,0.25);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .hero-name span {
+      display: block;
+      font-size: 0.42em;
+      letter-spacing: 0.18em;
+      opacity: 0.9;
+      margin-top: 0.15em;
+    }
+
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.55rem;
+      margin-top: 1.75rem;
+    }
+    .tool {
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: #c5d5cb;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* Statement */
+    .statement {
+      padding: 4rem 0 3rem;
+      text-align: center;
+    }
+    .statement h2 {
+      margin: 0 auto;
+      max-width: 18ch;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+    }
+    .statement p {
+      margin: 1.1rem auto 0;
+      max-width: 42rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* What I do */
+    .section {
+      padding: 2.5rem 0 4rem;
+    }
+    .section-title {
+      margin: 0 0 1.5rem;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #dfe9e3;
+    }
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+    }
+    .work-card {
+      display: grid;
+      grid-template-columns: 84px 1fr auto;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: rgba(16, 38, 28, 0.75);
+      transition: border-color .2s, transform .2s, background .2s;
+    }
+    .work-card:hover {
+      border-color: rgba(184, 255, 60, 0.45);
+      background: rgba(20, 48, 34, 0.95);
+      transform: translateY(-2px);
+    }
+    .work-thumb {
+      width: 84px;
+      height: 64px;
+      border-radius: 0.65rem;
+      background:
+        linear-gradient(135deg, rgba(184,255,60,0.25), transparent 55%),
+        #163526;
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      color: var(--lime);
+      font-weight: 800;
+    }
+    .work-card h3 {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .work-card p {
+      margin: 0.25rem 0 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .work-go {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      background: var(--lime);
+      color: #0a1a14;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .project {
+      padding: 1.35rem;
+      border: 1px solid var(--line);
+      border-radius: 1.15rem;
+      background: rgba(16, 38, 28, 0.7);
+      transition: transform .2s, border-color .2s;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .project:hover {
+      transform: translateY(-3px);
+      border-color: rgba(184, 255, 60, 0.4);
+    }
+    .badge {
+      display: inline-flex;
+      width: fit-content;
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(184, 255, 60, 0.12);
+      color: var(--lime);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .project h3 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .project p {
+      margin: 0;
+      color: var(--muted);
+      flex: 1;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .project-link {
+      color: var(--lime);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    /* Experience brief */
+    .exp {
+      display: grid;
+      gap: 0.85rem;
+    }
+    .exp-item {
+      padding: 1.15rem 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: rgba(16, 38, 28, 0.55);
+    }
+    .exp-item h3 { margin: 0; font-size: 1.1rem; }
+    .exp-item .meta { margin: 0.25rem 0 0.55rem; color: var(--lime); font-size: 0.88rem; font-weight: 600; }
+    .exp-item p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+
+    /* Contact */
+    .contact {
+      padding: 3rem 0 5rem;
+      text-align: center;
+    }
+    .contact h2 {
+      margin: 0 0 1.5rem;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+    }
+    .contact-bar {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.35rem 1.1rem;
+      padding: 1rem 1.35rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      background: rgba(16, 38, 28, 0.85);
+    }
+    .contact-bar a {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      min-width: 4.5rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .contact-bar .dot {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #fff;
+      color: #111;
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+    .contact-bar a:hover { color: var(--lime); }
+    .contact-bar a:hover .dot { background: var(--lime); }
+
+    footer {
+      text-align: center;
+      padding: 0 0 2.5rem;
+      color: #6f8578;
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        gap: 1.25rem;
+      }
+      .hero-side.left {
+        writing-mode: horizontal-tb;
+        transform: none;
+        justify-self: center;
+        text-align: center;
+      }
+      .hero-side.right {
+        justify-self: center;
+        text-align: center;
+        max-width: 28rem;
+      }
+      .work-grid, .projects { grid-template-columns: 1fr; }
+      .hero-name { width: 100%; font-size: clamp(2rem, 12vw, 3.2rem); bottom: 8%; }
+    }
+  </style>
 </head>
 <body>
-  <div class="studio">
-    <aside class="toolbar no-print">
-      <a href="assets/SanfelicediBagnoliFrancesco-CV-ITA.pdf" download>Scarica PDF</a>
-      <button type="button" onclick="window.print()">Stampa</button>
-    </aside>
+  <div class="wrap">
+    <nav class="topbar" aria-label="Primary">
+      <a class="pill" href="#work">
+        <span class="pill-ico">→</span>
+        See my work
+      </a>
+      <a class="pill" href="assets/SanfelicediBagnoliFrancesco-CV-ITA.pdf" download>
+        <span class="pill-ico">↓</span>
+        Download CV
+      </a>
+      <a class="pill" href="#contact">
+        <span class="pill-ico">✓</span>
+        Book a chat
+      </a>
+    </nav>
 
-    <article class="cv" id="cv">
-      <!-- LEFT RAIL -->
-      <aside class="rail">
-        <header class="identity">
-          <p class="identity-kicker">Curriculum Vitae</p>
-          <h1>Francesco Sanfelice di Bagnoli</h1>
-          <p class="identity-role">Software Engineer<br />Backend &amp; Cloud Systems</p>
-        </header>
+    <header class="hero">
+      <div class="hero-grid">
+        <p class="hero-side left">Software Engineer · Backend &amp; Cloud</p>
 
-        <section class="rail-block">
-          <h2>Contatti</h2>
-          <ul class="contact-list">
-            <li><a href="mailto:sanfelicefrancesco004@gmail.com">sanfelicefrancesco004@gmail.com</a></li>
-            <li><a href="tel:+393288826170">+39 328 882 6170</a></li>
-            <li>Giovinazzo (BA), Italia</li>
-            <li><a href="https://sanfelix2004.github.io/francesco-sanfelice-portfolio/">Portfolio online</a></li>
-            <li><a href="https://github.com/sanfelix2004" target="_blank" rel="noopener">github.com/sanfelix2004</a></li>
-          </ul>
-        </section>
+        <div class="hero-avatar-wrap">
+          <img
+            class="hero-avatar"
+            src="assets/francesco-avatar.png"
+            width="840"
+            height="1120"
+            alt="Francesco Sanfelice di Bagnoli — stylized portrait"
+          />
+          <h1 class="hero-name">Francesco<span>Sanfelice</span></h1>
+        </div>
 
-        <section class="rail-block">
-          <h2>Lingue</h2>
-          <ul class="plain">
-            <li><strong>Italiano</strong> — madrelingua</li>
-            <li><strong>Inglese</strong> — B2, certificato Cambridge</li>
-          </ul>
-        </section>
-
-        <section class="rail-block">
-          <h2>Competenze</h2>
-          <h3>Backend</h3>
-          <p>Java, Spring Boot, Spring Cloud, Spring Data JPA, Spring Security, OpenAPI 3.0, REST, Maven, C, C++, C#, Python</p>
-          <h3>Cloud &amp; Dati</h3>
-          <p>AWS SQS, SNS, S3, DynamoDB, Parameter Store, Redis, PostgreSQL, SQL / NoSQL, Docker, Linux</p>
-          <h3>Frontend &amp; Mobile</h3>
-          <p>JavaScript, TypeScript, HTML/CSS, PHP, Angular, React, Swift / iOS, Flutter, Android</p>
-          <h3>Metodo</h3>
-          <p>Microservizi, sistemi distribuiti, Git/GitHub, Postman, Swagger, JIRA, Confluence, ML, Matlab</p>
-        </section>
-
-        <section class="rail-block">
-          <h2>Certificazioni</h2>
-          <ul class="plain">
-            <li>Cambridge English B2</li>
-            <li>Cisco CPA — Programming Essentials in C++</li>
-            <li>Cisco Introduction to Cybersecurity</li>
-            <li>Cisco NDG Linux Unhatched</li>
-            <li>Cisco Introduction to Packet Tracer</li>
-            <li>Cisco Entrepreneurship</li>
-          </ul>
-        </section>
-      </aside>
-
-      <!-- MAIN COLUMN -->
-      <div class="main">
-        <section class="block">
-          <h2>Profilo</h2>
-          <p class="lead">
-            Junior Software Engineer specializzato nella progettazione di microservizi backend
-            in ecosistemi cloud-native. Esperienza diretta su streaming OTT ad alto traffico
-            (Mediaset Infinity, tenant ITA ed ESP). Orientamento all’architettura dei sistemi,
-            all’Intelligenza Artificiale e all’ingegneria del software.
-          </p>
-        </section>
-
-        <section class="block">
-          <h2>Esperienza professionale</h2>
-
-          <article class="job">
-            <div class="job-head">
-              <div>
-                <h3>Software Engineer</h3>
-                <p class="job-org">Fincons Group · Bari, Italia</p>
-              </div>
-              <p class="job-dates">04/2025 — in corso</p>
-            </div>
-            <ul>
-              <li>Progettazione e sviluppo di microservizi backend in Java / Spring per l’ecosistema OTT Mediaset Infinity (tenant ITA ed ESP).</li>
-              <li>Gestione, versionamento e documentazione di API RESTful con OpenAPI 3.0 / Swagger, con attenzione a retrocompatibilità e integrazione client.</li>
-              <li>Analisi e risoluzione di bug in scenari distribuiti ad alto traffico.</li>
-              <li>Testing manuale e di integrazione tramite Swagger e curl.</li>
-            </ul>
-            <p class="job-stack">Java · Spring Boot · Spring Web · Spring Cloud · Spring Data JPA · Spring Security · Redis · DynamoDB · AWS SQS / SNS / S3 / Parameter Store · CVP · ThePlatform (MPX) · Maven · GitHub · Postman · JIRA</p>
-          </article>
-
-          <article class="job">
-            <div class="job-head">
-              <div>
-                <h3>Commesso di negozio specializzato</h3>
-                <p class="job-org">Lagardère Travel Retail · Aeroporto Bari-Palese</p>
-              </div>
-              <p class="job-dates">06/2024 — 09/2024</p>
-            </div>
-            <ul>
-              <li>Assistenza a clientela internazionale e comunicazione quotidiana in inglese.</li>
-              <li>Gestione duty-free, cassa e aperture/chiusure in contesto aeroportuale.</li>
-            </ul>
-          </article>
-
-          <article class="job">
-            <div class="job-head">
-              <div>
-                <h3>Commesso di negozio specializzato</h3>
-                <p class="job-org">OMG @Zhivago · Galway, Irlanda · Erasmus+</p>
-              </div>
-              <p class="job-dates">09/2022 — 10/2022</p>
-            </div>
-            <ul>
-              <li>Esperienza lavorativa all’estero in ambiente madrelingua inglese.</li>
-              <li>Accoglienza clienti e comunicazione fluente in un contesto multicultural.</li>
-            </ul>
-          </article>
-        </section>
-
-        <section class="block">
-          <h2>Istruzione</h2>
-
-          <article class="job">
-            <div class="job-head">
-              <div>
-                <h3>Laurea Triennale in Ingegneria Informatica e AI</h3>
-                <p class="job-org">Università degli Studi Guglielmo Marconi · Roma</p>
-              </div>
-              <p class="job-dates">06/2026 — in corso</p>
-            </div>
-            <p class="note">
-              Percorso iniziato al Politecnico di Bari (Ingegneria Informatica e dell’Automazione)
-              e proseguito presso l’Università Telematica Guglielmo Marconi tramite trasferimento
-              carriera con convalida CFU.
-            </p>
-            <p class="job-stack">Algoritmi · OOP · Basi di dati · Intelligenza Artificiale · Machine Learning · Reti neurali · Sistemi operativi · Reti e Internet</p>
-          </article>
-
-          <article class="job">
-            <div class="job-head">
-              <div>
-                <h3>Diploma in Informatica e Telecomunicazioni</h3>
-                <p class="job-org">IISS Volta De Gemmis · Bitonto · 100/100 con Lode</p>
-              </div>
-              <p class="job-dates">09/2018 — 06/2023</p>
-            </div>
-            <p class="note">Reti e protocolli (TCP/IP, UDP, HTTP/S, DNS, DHCP, VLAN, routing), programmazione e sviluppo web.</p>
-            <p class="job-stack">Java · C / C++ · Python · PHP · JavaScript · SQL · Assembly x86 · Linux</p>
-          </article>
-        </section>
-
-        <section class="block">
-          <h2>Progetti</h2>
-
-          <article class="job project">
-            <div class="job-head">
-              <div>
-                <h3>Corner Pub Giovinazzo</h3>
-                <p class="job-org">Sito ufficiale / anteprima digitale — Hamburgeria &amp; Pub</p>
-              </div>
-              <p class="job-dates"><a href="https://cornerpubgiovinazzo.onrender.com" target="_blank" rel="noopener">Live ↗</a></p>
-            </div>
-            <p class="note">
-              Prodotto digitale per Corner Hamburgeria: menù, promozioni, prenotazioni tavolo ed eventi,
-              gestione allergeni e flusso privacy. Pubblicato su Render.
-            </p>
-            <p class="job-stack">Web app · Prenotazioni · Full-stack · Render</p>
-          </article>
-
-          <article class="job project">
-            <div class="job-head">
-              <div>
-                <h3>Smart Energy AI</h3>
-                <p class="job-org">Piattaforma Smart Sustainability per il monitoraggio energetico domestico</p>
-              </div>
-              <p class="job-dates"><a href="https://github.com/sanfelix2004/smart-energy-ai-public" target="_blank" rel="noopener">GitHub ↗</a></p>
-            </div>
-            <p class="note">
-              Backend Spring Boot con simulazione fotovoltaica, rilevazione standby e assistente Smart Home AI
-              per consigli di consumo. Dashboard 24h e persistenza PostgreSQL. Java 21 / Spring Boot 3.
-            </p>
-            <p class="job-stack">Java 21 · Spring Boot 3 · PostgreSQL · AI Assistant</p>
-          </article>
-
-          <article class="job project">
-            <div class="job-head">
-              <div>
-                <h3>HACCP Software</h3>
-                <p class="job-org">Applicazione iOS per ristoranti e attività alimentari — in sviluppo</p>
-              </div>
-              <p class="job-dates"><a href="https://github.com/sanfelix2004/haccp-software" target="_blank" rel="noopener">GitHub ↗</a></p>
-            </div>
-            <p class="note">
-              Checklist HACCP, reportistica, dashboard analytics e tracciabilità.
-              Architettura modulare feature-based in Swift (App, Core, Features, Resources).
-            </p>
-            <p class="job-stack">Swift · iOS · HACCP · Modular architecture</p>
-          </article>
-        </section>
+        <p class="hero-side right">
+          Hi, I’m Francesco — a Software Engineer building scalable backend systems,
+          cloud services and AI-powered products. I love English, clean architecture,
+          and shipping things that work under real traffic.
+        </p>
       </div>
-    </article>
+
+      <div class="tools" aria-label="Tech stack">
+        <span class="tool">Java</span>
+        <span class="tool">Spring Boot</span>
+        <span class="tool">AWS</span>
+        <span class="tool">Redis</span>
+        <span class="tool">DynamoDB</span>
+        <span class="tool">PostgreSQL</span>
+        <span class="tool">Swift</span>
+        <span class="tool">Python</span>
+        <span class="tool">Docker</span>
+      </div>
+    </header>
+
+    <section class="statement">
+      <h2>Building reliable backends, cloud systems and high-impact digital products.</h2>
+      <p>
+        From OTT microservices at Fincons Group (Mediaset Infinity) to live web products and AI platforms —
+        I design, ship and iterate with a product mindset and engineering discipline.
+      </p>
+    </section>
+
+    <section class="section" id="work">
+      <h2 class="section-title">what I do</h2>
+      <div class="work-grid">
+        <a class="work-card" href="#projects">
+          <div class="work-thumb">BE</div>
+          <div>
+            <h3>Backend Microservices</h3>
+            <p>Java · Spring Boot · Spring Cloud</p>
+          </div>
+          <span class="work-go">→</span>
+        </a>
+        <a class="work-card" href="#projects">
+          <div class="work-thumb">AWS</div>
+          <div>
+            <h3>Cloud &amp; AWS Systems</h3>
+            <p>SQS · SNS · S3 · DynamoDB</p>
+          </div>
+          <span class="work-go">→</span>
+        </a>
+        <a class="work-card" href="#projects">
+          <div class="work-thumb">API</div>
+          <div>
+            <h3>REST API Design</h3>
+            <p>OpenAPI 3.0 · Swagger · Versioning</p>
+          </div>
+          <span class="work-go">→</span>
+        </a>
+        <a class="work-card" href="#projects">
+          <div class="work-thumb">AI</div>
+          <div>
+            <h3>AI &amp; Data Products</h3>
+            <p>Smart Energy AI · ML foundations</p>
+          </div>
+          <span class="work-go">→</span>
+        </a>
+        <a class="work-card" href="#projects">
+          <div class="work-thumb">iOS</div>
+          <div>
+            <h3>Mobile Apps (Swift)</h3>
+            <p>HACCP Software · modular iOS</p>
+          </div>
+          <span class="work-go">→</span>
+        </a>
+        <a class="work-card" href="#projects">
+          <div class="work-thumb">WEB</div>
+          <div>
+            <h3>Full-stack Web Products</h3>
+            <p>Corner Pub · bookings · live demos</p>
+          </div>
+          <span class="work-go">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <h2 class="section-title">selected projects</h2>
+      <div class="projects">
+        <a class="project" href="https://cornerpubgiovinazzo.onrender.com" target="_blank" rel="noopener">
+          <span class="badge">Live</span>
+          <h3>Corner Pub Giovinazzo</h3>
+          <p>Digital preview &amp; official site for Corner Hamburgeria — menu, bookings, events, allergens, privacy flow.</p>
+          <span class="project-link">Open live site →</span>
+        </a>
+        <a class="project" href="https://github.com/sanfelix2004/smart-energy-ai-public" target="_blank" rel="noopener">
+          <span class="badge">Open source</span>
+          <h3>Smart Energy AI</h3>
+          <p>Smart Sustainability platform: Spring Boot backend, solar simulation, standby detection and Smart Home AI tips.</p>
+          <span class="project-link">View on GitHub →</span>
+        </a>
+        <a class="project" href="https://github.com/sanfelix2004/haccp-software" target="_blank" rel="noopener">
+          <span class="badge">In progress · Swift</span>
+          <h3>HACCP Software</h3>
+          <p>iOS app for restaurants: HACCP checklists, reports, analytics and traceability. Feature-based Swift architecture.</p>
+          <span class="project-link">View on GitHub →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <h2 class="section-title">experience</h2>
+      <div class="exp">
+        <article class="exp-item">
+          <h3>Software Engineer — Fincons Group</h3>
+          <p class="meta">04/2025 — Present · Bari, Italy</p>
+          <p>Backend microservices for Mediaset Infinity OTT (ITA/ESP tenants). Java/Spring, OpenAPI, Redis, DynamoDB, AWS messaging.</p>
+        </article>
+        <article class="exp-item">
+          <h3>Computer Engineering &amp; AI — Guglielmo Marconi University</h3>
+          <p class="meta">In progress · started at Polytechnic University of Bari</p>
+          <p>Transfer with CFU validation. Focus on algorithms, AI, machine learning, systems and networks.</p>
+        </article>
+        <article class="exp-item">
+          <h3>Erasmus+ · Galway, Ireland</h3>
+          <p class="meta">2022 · English immersion</p>
+          <p>Work experience abroad that sharpened communication and adaptability in a multicultural environment.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Contact me</h2>
+      <div class="contact-bar">
+        <a href="mailto:sanfelicefrancesco004@gmail.com">
+          <span class="dot">@</span>
+          Email
+        </a>
+        <a href="tel:+393288826170">
+          <span class="dot">☎</span>
+          Phone
+        </a>
+        <a href="https://github.com/sanfelix2004" target="_blank" rel="noopener">
+          <span class="dot">GH</span>
+          GitHub
+        </a>
+        <a href="assets/SanfelicediBagnoliFrancesco-CV-ITA.pdf" download>
+          <span class="dot">CV</span>
+          Resume
+        </a>
+        <a href="https://cornerpubgiovinazzo.onrender.com" target="_blank" rel="noopener">
+          <span class="dot">▶</span>
+          Corner
+        </a>
+      </div>
+    </section>
+
+    <footer>© 2026 Francesco Sanfelice di Bagnoli · Software Engineer</footer>
   </div>
 </body>
 </html>
