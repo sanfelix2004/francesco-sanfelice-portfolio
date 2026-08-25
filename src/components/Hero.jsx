@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import InteractiveAvatar from './InteractiveAvatar'
 import { profile, tools } from '../data/profile'
 
 export default function Hero() {
@@ -15,32 +16,14 @@ export default function Hero() {
           </div>
         </Reveal>
 
-        {/* Center avatar */}
+        {/* Center avatar — interactive */}
         <Reveal className="relative order-1 mx-auto w-full max-w-[420px] lg:order-2" delay={0.05}>
           <div
             className="pointer-events-none absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-glow/70 blur-3xl"
             aria-hidden
           />
-          <div className="relative">
-            <img
-              src={profile.avatar}
-              alt={`${profile.name} — stylized portrait`}
-              className="relative z-10 mx-auto aspect-[3/4] w-full rounded-3xl object-cover object-top shadow-[0_30px_80px_rgba(0,0,0,0.45)]"
-              width={840}
-              height={1120}
-            />
-            <div className="pointer-events-none absolute inset-x-0 bottom-[8%] z-20 px-2 text-center">
-              <p className="mb-1 text-[0.7rem] font-bold uppercase tracking-[0.35em] text-accent sm:text-xs">
-                {profile.tagline}
-              </p>
-              <h1 className="bg-gradient-to-b from-white via-white to-white/55 bg-clip-text text-4xl font-extrabold uppercase leading-[0.9] tracking-tight text-transparent sm:text-5xl md:text-6xl">
-                {profile.shortName}
-                <span className="mt-1 block text-[0.42em] tracking-[0.22em] text-white/80">
-                  {profile.lastName}
-                </span>
-              </h1>
-            </div>
-          </div>
+          <InteractiveAvatar />
+          <p className="mt-3 text-center text-xs text-white/35 lg:hidden">Tap the avatar to say hi</p>
         </Reveal>
 
         {/* Right bio */}
