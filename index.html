@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Francesco Sanfelice di Bagnoli — Junior Software Engineer | Backend & Cloud</title>
-  <meta name="description" content="Junior Software Engineer specializzato in microservizi backend scalabili Java/Spring/AWS. Esperienza su streaming OTT ad alto traffico (Mediaset Infinity)." />
+  <title>Francesco Sanfelice di Bagnoli — CV / Portfolio | Software Engineer</title>
+  <meta name="description" content="CV interattivo di Francesco Sanfelice di Bagnoli — Junior Software Engineer (Java/Spring/AWS). Progetti: Corner Pub, Smart Energy AI, HACCP Software." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -31,32 +29,23 @@
     };
   </script>
 
-  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body class="bg-space text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-neon-cyan/30 selection:text-white">
 
-  <!-- ===== BACKGROUND ENGINE (particelle + griglia 3D) ===== -->
   <canvas id="bg-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
   <div class="fixed inset-0 z-0 pointer-events-none bg-gradient-to-b from-transparent via-transparent to-space"></div>
   <div id="scanline" class="fixed inset-0 z-0 pointer-events-none"></div>
 
-  <!-- ===== NAVBAR ===== -->
+  <!-- ===== TOP NAV ===== -->
   <header class="fixed top-0 inset-x-0 z-50">
     <nav class="glass mx-auto mt-4 max-w-6xl rounded-2xl px-5 py-3 flex items-center justify-between">
-      <a href="#top" class="flex items-center gap-3 group">
+      <a href="#top" class="flex items-center gap-3 group" data-cv-show="all">
         <div class="hud-logo grid place-items-center w-9 h-9 rounded-lg font-mono text-sm font-bold text-neon-cyan">FS</div>
         <span class="font-mono text-sm tracking-widest text-slate-400 group-hover:text-neon-cyan transition-colors hidden sm:inline">sanfelice<span class="text-neon-cyan">.dev</span></span>
       </a>
-      <div class="hidden md:flex items-center gap-6 font-mono text-xs tracking-widest text-slate-400">
-        <a href="#stack" class="nav-link">// STACK</a>
-        <a href="#missions" class="nav-link">// MISSION_LOGS</a>
-        <a href="#console" class="nav-link">// CONSOLE</a>
-        <a href="#contact" class="nav-link">// CONTACT</a>
-      </div>
       <a href="mailto:sanfelicefrancesco004@gmail.com" class="magnetic btn-neon font-mono text-xs px-4 py-2 rounded-lg" data-sfx>
         <i data-lucide="send" class="w-3.5 h-3.5 inline -mt-0.5"></i> HIRE_ME
       </a>
@@ -66,10 +55,8 @@
   <main id="top" class="relative z-10">
 
     <!-- ===== HERO ===== -->
-    <section class="min-h-screen flex items-center pt-28 pb-16">
+    <section class="min-h-[88vh] flex items-center pt-28 pb-10">
       <div class="mx-auto max-w-6xl px-6 w-full grid lg:grid-cols-2 gap-12 items-center">
-
-        <!-- Left: identity -->
         <div class="reveal">
           <div class="status-badge inline-flex items-center gap-2.5 rounded-full px-4 py-1.5 font-mono text-[11px] tracking-[0.2em] text-neon-cyan mb-7">
             <span class="relative flex h-2 w-2">
@@ -79,6 +66,7 @@
             STATUS: AVAILABLE FOR HIGH-IMPACT ROLES
           </div>
 
+          <p class="font-mono text-xs tracking-[0.25em] text-slate-500 mb-3">CV INTERATTIVO // DIGITAL RESUME</p>
           <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.02] tracking-tight">
             <span class="shimmer-text">Francesco</span><br />
             <span class="shimmer-text">Sanfelice</span><br />
@@ -105,8 +93,8 @@
             <button id="hero-download-cv" class="magnetic btn-neon px-6 py-3 rounded-xl font-mono text-sm" data-sfx>
               <i data-lucide="file-down" class="w-4 h-4 inline -mt-0.5 mr-1"></i> download-cv
             </button>
-            <a href="#console" class="magnetic px-5 py-3 rounded-xl font-mono text-sm text-slate-400 hover:text-neon-cyan transition-colors" data-sfx>
-              <i data-lucide="terminal" class="w-4 h-4 inline -mt-0.5 mr-1"></i> apri console_
+            <a href="#projects" class="magnetic px-5 py-3 rounded-xl font-mono text-sm text-slate-400 hover:text-neon-cyan transition-colors" data-sfx data-cv-show="projects">
+              <i data-lucide="folder-code" class="w-4 h-4 inline -mt-0.5 mr-1"></i> vedi progetti_
             </a>
           </div>
 
@@ -116,7 +104,6 @@
           </div>
         </div>
 
-        <!-- Right: boot terminal -->
         <div class="reveal" style="--reveal-delay:.15s">
           <div class="terminal-window glass rounded-2xl overflow-hidden">
             <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-white/[0.02]">
@@ -132,147 +119,36 @@
       </div>
     </section>
 
-    <!-- ===== TECH STACK MATRIX ===== -->
-    <section id="stack" class="py-24">
-      <div class="mx-auto max-w-6xl px-6">
-        <div class="section-head reveal">
-          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">01 // SYSTEM CAPABILITIES</span>
-          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Tech Stack Matrix</h2>
-          <p class="mt-3 text-slate-500 max-w-2xl">Moduli tecnologici caricati e operativi. Passa il cursore sulle celle per l'analisi HUD.</p>
+    <!-- ===== CV MENU — scegli cosa vedere ===== -->
+    <div id="cv-menu" class="sticky top-[72px] z-40 px-4 pb-2">
+      <div class="glass mx-auto max-w-6xl rounded-2xl px-3 py-2.5">
+        <div class="flex items-center gap-2 mb-2 px-2">
+          <i data-lucide="layout-list" class="w-3.5 h-3.5 text-neon-cyan"></i>
+          <span class="font-mono text-[10px] tracking-[0.25em] text-slate-500">CV SECTIONS — SCEGLI COSA VEDERE</span>
         </div>
-
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-6 gap-5">
-
-          <!-- Backend & Core -->
-          <div class="tilt bento md:col-span-4 reveal" data-glow="#00f2fe">
-            <div class="bento-inner p-7">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="icon-chip text-neon-cyan"><i data-lucide="server" class="w-5 h-5"></i></div>
-                <h3 class="font-bold text-lg text-white">Backend &amp; Core</h3>
-                <span class="ml-auto font-mono text-[10px] text-neon-cyan/70 tracking-widest">MODULE: PRIMARY</span>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="chip chip-cyan">Java</span>
-                <span class="chip chip-cyan">Spring Boot</span>
-                <span class="chip chip-cyan">Spring Cloud</span>
-                <span class="chip chip-cyan">Spring Data JPA</span>
-                <span class="chip chip-cyan">Spring Security</span>
-                <span class="chip chip-cyan">OpenAPI 3.0 / REST API</span>
-                <span class="chip chip-cyan">Maven</span>
-                <span class="chip chip-cyan">C</span>
-                <span class="chip chip-cyan">C++</span>
-                <span class="chip chip-cyan">C#</span>
-                <span class="chip chip-cyan">Python</span>
-              </div>
-              <div class="mt-6 skill-bars space-y-3 font-mono text-[11px]">
-                <div><div class="flex justify-between text-slate-500 mb-1"><span>JAVA / SPRING ECOSYSTEM</span><span class="text-neon-cyan">██ 92%</span></div><div class="bar"><span style="--w:92%"></span></div></div>
-                <div><div class="flex justify-between text-slate-500 mb-1"><span>REST API DESIGN / OPENAPI</span><span class="text-neon-cyan">██ 88%</span></div><div class="bar"><span style="--w:88%"></span></div></div>
-                <div><div class="flex justify-between text-slate-500 mb-1"><span>C / C++ / PYTHON</span><span class="text-neon-cyan">██ 74%</span></div><div class="bar"><span style="--w:74%"></span></div></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Cloud, DB & Infra -->
-          <div class="tilt bento md:col-span-2 md:row-span-2 reveal" data-glow="#7f00ff" style="--reveal-delay:.1s">
-            <div class="bento-inner p-7 h-full">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="icon-chip text-neon-violet"><i data-lucide="cloud" class="w-5 h-5"></i></div>
-                <h3 class="font-bold text-lg text-white">Cloud, Database<br/>&amp; Infrastruttura</h3>
-              </div>
-              <ul class="space-y-3 font-mono text-[12.5px] text-slate-400">
-                <li class="stack-li"><i data-lucide="box" class="w-3.5 h-3.5 text-neon-violet"></i> AWS SQS · SNS · S3</li>
-                <li class="stack-li"><i data-lucide="database" class="w-3.5 h-3.5 text-neon-violet"></i> Amazon DynamoDB</li>
-                <li class="stack-li"><i data-lucide="key-round" class="w-3.5 h-3.5 text-neon-violet"></i> AWS Parameter Store</li>
-                <li class="stack-li"><i data-lucide="zap" class="w-3.5 h-3.5 text-neon-violet"></i> Redis</li>
-                <li class="stack-li"><i data-lucide="database-zap" class="w-3.5 h-3.5 text-neon-violet"></i> PostgreSQL · SQL &amp; NoSQL</li>
-                <li class="stack-li"><i data-lucide="container" class="w-3.5 h-3.5 text-neon-violet"></i> Docker</li>
-                <li class="stack-li"><i data-lucide="terminal" class="w-3.5 h-3.5 text-neon-violet"></i> Linux (Ubuntu / Kali)</li>
-              </ul>
-              <div class="mt-6 radar-wrap">
-                <canvas id="radar-canvas" width="260" height="260" class="mx-auto"></canvas>
-              </div>
-            </div>
-          </div>
-
-          <!-- Frontend & Mobile -->
-          <div class="tilt bento md:col-span-2 reveal" data-glow="#4facfe" style="--reveal-delay:.2s">
-            <div class="bento-inner p-7">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="icon-chip text-neon-blue"><i data-lucide="smartphone" class="w-5 h-5"></i></div>
-                <h3 class="font-bold text-lg text-white">Frontend &amp; Mobile</h3>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="chip chip-blue">JavaScript</span>
-                <span class="chip chip-blue">TypeScript</span>
-                <span class="chip chip-blue">HTML5 / CSS3</span>
-                <span class="chip chip-blue">PHP</span>
-                <span class="chip chip-blue">Angular</span>
-                <span class="chip chip-blue">React</span>
-                <span class="chip chip-blue">Flutter &amp; Dart</span>
-                <span class="chip chip-blue">Android App</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Architecture & Tools -->
-          <div class="tilt bento md:col-span-2 reveal" data-glow="#00f2fe" style="--reveal-delay:.25s">
-            <div class="bento-inner p-7">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="icon-chip text-neon-cyan"><i data-lucide="git-branch" class="w-5 h-5"></i></div>
-                <h3 class="font-bold text-lg text-white">Architecture &amp; Tools</h3>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="chip chip-cyan">Microservizi</span>
-                <span class="chip chip-cyan">Sistemi Distribuiti</span>
-                <span class="chip chip-cyan">Git / GitHub</span>
-                <span class="chip chip-cyan">Postman</span>
-                <span class="chip chip-cyan">Swagger</span>
-                <span class="chip chip-cyan">JIRA / Confluence</span>
-                <span class="chip chip-cyan">CVP</span>
-                <span class="chip chip-cyan">ThePlatform (MPX)</span>
-                <span class="chip chip-violet">AI Generativa</span>
-                <span class="chip chip-violet">Machine Learning</span>
-                <span class="chip chip-violet">Cybersecurity base (Kali)</span>
-                <span class="chip chip-violet">Matlab</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Certificazioni -->
-          <div class="tilt bento md:col-span-6 reveal" data-glow="#7f00ff" style="--reveal-delay:.3s">
-            <div class="bento-inner p-7">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="icon-chip text-neon-violet"><i data-lucide="badge-check" class="w-5 h-5"></i></div>
-                <h3 class="font-bold text-lg text-white">Certificazioni</h3>
-                <span class="ml-auto font-mono text-[10px] text-neon-violet/70 tracking-widest">VERIFIED CREDENTIALS</span>
-              </div>
-              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 font-mono text-[12px]">
-                <div class="cert-card"><i data-lucide="graduation-cap" class="w-4 h-4 text-neon-cyan"></i> Cambridge English B2</div>
-                <div class="cert-card"><i data-lucide="code-2" class="w-4 h-4 text-neon-cyan"></i> Cisco CPA: Programming Essentials in C++</div>
-                <div class="cert-card"><i data-lucide="shield-check" class="w-4 h-4 text-neon-cyan"></i> Cisco Introduction to Cybersecurity</div>
-                <div class="cert-card"><i data-lucide="terminal-square" class="w-4 h-4 text-neon-cyan"></i> Cisco NDG Linux Unhatched</div>
-                <div class="cert-card"><i data-lucide="network" class="w-4 h-4 text-neon-cyan"></i> Cisco Introduction to Packet Tracer</div>
-                <div class="cert-card"><i data-lucide="lightbulb" class="w-4 h-4 text-neon-cyan"></i> Cisco Entrepreneurship</div>
-              </div>
-            </div>
-          </div>
-
+        <div class="flex gap-2 overflow-x-auto pb-1 cv-menu-scroll" id="cv-menu-buttons">
+          <button type="button" class="cv-tab active" data-cv-show="all"><i data-lucide="layers" class="w-3.5 h-3.5"></i> Tutto</button>
+          <button type="button" class="cv-tab" data-cv-show="experience"><i data-lucide="briefcase" class="w-3.5 h-3.5"></i> Esperienza</button>
+          <button type="button" class="cv-tab" data-cv-show="education"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Studi</button>
+          <button type="button" class="cv-tab" data-cv-show="projects"><i data-lucide="folder-code" class="w-3.5 h-3.5"></i> Progetti</button>
+          <button type="button" class="cv-tab" data-cv-show="stack"><i data-lucide="cpu" class="w-3.5 h-3.5"></i> Stack</button>
+          <button type="button" class="cv-tab" data-cv-show="certs"><i data-lucide="badge-check" class="w-3.5 h-3.5"></i> Certificazioni</button>
+          <button type="button" class="cv-tab" data-cv-show="console"><i data-lucide="terminal" class="w-3.5 h-3.5"></i> Console</button>
+          <button type="button" class="cv-tab" data-cv-show="contact"><i data-lucide="mail" class="w-3.5 h-3.5"></i> Contatti</button>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- ===== MISSION LOGS (TIMELINE) ===== -->
-    <section id="missions" class="py-24">
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="experience" class="cv-section py-20" data-cv-section="experience">
       <div class="mx-auto max-w-6xl px-6">
         <div class="section-head reveal">
-          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">02 // DEPLOYMENT HISTORY</span>
-          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Mission Logs</h2>
-          <p class="mt-3 text-slate-500 max-w-2xl">Pipeline cronologica delle missioni professionali e accademiche.</p>
+          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">01 // WORK EXPERIENCE</span>
+          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Esperienza Lavorativa</h2>
+          <p class="mt-3 text-slate-500 max-w-2xl">Missioni professionali sul campo — backend, cloud e contesti internazionali.</p>
         </div>
 
-        <div class="timeline mt-16 relative">
-
-          <!-- Fincons -->
+        <div class="timeline mt-14 relative">
           <article class="tl-item reveal">
             <div class="tl-node tl-node-active"><i data-lucide="rocket" class="w-4 h-4"></i></div>
             <div class="tilt tl-card glass rounded-2xl p-7" data-glow="#00f2fe">
@@ -302,29 +178,6 @@
             </div>
           </article>
 
-          <!-- Laurea — Università Guglielmo Marconi -->
-          <article class="tl-item reveal">
-            <div class="tl-node"><i data-lucide="graduation-cap" class="w-4 h-4"></i></div>
-            <div class="tilt tl-card glass rounded-2xl p-7" data-glow="#4facfe">
-              <div class="flex flex-wrap items-center gap-3 mb-1">
-                <span class="font-mono text-[10px] tracking-widest px-2.5 py-1 rounded-md bg-neon-blue/10 text-neon-blue border border-neon-blue/30">EDUCATION: IN PROGRESS</span>
-                <span class="font-mono text-xs text-slate-500">06/2026 — In corso</span>
-              </div>
-              <h3 class="text-2xl font-bold text-white mt-2">Laurea Triennale — Ingegneria Informatica e AI</h3>
-              <p class="font-mono text-sm text-neon-blue mt-0.5">Università degli Studi Guglielmo Marconi — Roma</p>
-              <p class="mt-4 text-slate-400 text-sm leading-relaxed">
-                Percorso iniziato presso il <span class="text-slate-200">Politecnico di Bari</span> (Ingegneria Informatica
-                e dell'Automazione) e proseguito presso l'Università Telematica Guglielmo Marconi tramite trasferimento
-                carriera con convalida CFU. Focus su sviluppo software, Intelligenza Artificiale &amp; Data Science,
-                sistemi, architetture e reti.
-              </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span class="chip chip-blue">Algoritmi &amp; Strutture Dati</span><span class="chip chip-blue">Programmazione OO</span><span class="chip chip-blue">Basi di Dati e di Conoscenza</span><span class="chip chip-violet">Intelligenza Artificiale</span><span class="chip chip-violet">Machine Learning</span><span class="chip chip-violet">Reti Logiche &amp; Neurali</span><span class="chip chip-violet">Laboratorio di AI</span><span class="chip chip-violet">AI Innovation Manager</span><span class="chip chip-blue">Calcolatori &amp; Sistemi Operativi</span><span class="chip chip-blue">Reti e Internet</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Lagardère Travel Retail -->
           <article class="tl-item reveal">
             <div class="tl-node"><i data-lucide="plane" class="w-4 h-4"></i></div>
             <div class="tilt tl-card glass rounded-2xl p-7" data-glow="#4facfe">
@@ -344,7 +197,6 @@
             </div>
           </article>
 
-          <!-- OMG @Zhivago -->
           <article class="tl-item reveal">
             <div class="tl-node"><i data-lucide="globe" class="w-4 h-4"></i></div>
             <div class="tilt tl-card glass rounded-2xl p-7" data-glow="#4facfe">
@@ -363,14 +215,47 @@
               </div>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
 
-          <!-- Diploma -->
+    <!-- ===== EDUCATION ===== -->
+    <section id="education" class="cv-section py-20" data-cv-section="education">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="section-head reveal">
+          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">02 // ACADEMIC PATH</span>
+          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Percorso di Studi</h2>
+          <p class="mt-3 text-slate-500 max-w-2xl">Formazione tecnica e accademica — dal diploma alla laurea in Informatica e AI.</p>
+        </div>
+
+        <div class="timeline mt-14 relative">
+          <article class="tl-item reveal">
+            <div class="tl-node tl-node-active"><i data-lucide="graduation-cap" class="w-4 h-4"></i></div>
+            <div class="tilt tl-card glass rounded-2xl p-7" data-glow="#4facfe">
+              <div class="flex flex-wrap items-center gap-3 mb-1">
+                <span class="font-mono text-[10px] tracking-widest px-2.5 py-1 rounded-md bg-neon-blue/10 text-neon-blue border border-neon-blue/30">EDUCATION: IN PROGRESS</span>
+                <span class="font-mono text-xs text-slate-500">06/2026 — In corso</span>
+              </div>
+              <h3 class="text-2xl font-bold text-white mt-2">Laurea Triennale — Ingegneria Informatica e AI</h3>
+              <p class="font-mono text-sm text-neon-blue mt-0.5">Università degli Studi Guglielmo Marconi — Roma</p>
+              <p class="mt-4 text-slate-400 text-sm leading-relaxed">
+                Percorso iniziato presso il <span class="text-slate-200">Politecnico di Bari</span> (Ingegneria Informatica
+                e dell'Automazione) e proseguito presso l'Università Telematica Guglielmo Marconi tramite trasferimento
+                carriera con convalida CFU. Focus su sviluppo software, Intelligenza Artificiale &amp; Data Science,
+                sistemi, architetture e reti.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="chip chip-blue">Algoritmi &amp; Strutture Dati</span><span class="chip chip-blue">Programmazione OO</span><span class="chip chip-blue">Basi di Dati e di Conoscenza</span><span class="chip chip-violet">Intelligenza Artificiale</span><span class="chip chip-violet">Machine Learning</span><span class="chip chip-violet">Reti Logiche &amp; Neurali</span><span class="chip chip-violet">Laboratorio di AI</span><span class="chip chip-violet">AI Innovation Manager</span><span class="chip chip-blue">Calcolatori &amp; Sistemi Operativi</span><span class="chip chip-blue">Reti e Internet</span>
+              </div>
+            </div>
+          </article>
+
           <article class="tl-item reveal">
             <div class="tl-node"><i data-lucide="award" class="w-4 h-4"></i></div>
             <div class="tilt tl-card glass rounded-2xl p-7" data-glow="#7f00ff">
               <div class="flex flex-wrap items-center gap-3 mb-1">
-                <span class="font-mono text-[10px] tracking-widest px-2.5 py-1 rounded-md bg-neon-violet/10 text-[#b366ff] border border-neon-violet/40">MISSION: COMPLETED — 100/100 CON LODE</span>
-                <span class="font-mono text-xs text-slate-500">2018 — 2023</span>
+                <span class="font-mono text-[10px] tracking-widest px-2.5 py-1 rounded-md bg-neon-violet/10 text-[#b366ff] border border-neon-violet/40">COMPLETED — 100/100 CON LODE</span>
+                <span class="font-mono text-xs text-slate-500">09/2018 — 06/2023</span>
               </div>
               <h3 class="text-2xl font-bold text-white mt-2">Diploma — Informatica e Telecomunicazioni</h3>
               <p class="font-mono text-sm text-neon-blue mt-0.5">IISS Volta De Gemmis — Bitonto</p>
@@ -383,16 +268,242 @@
               </div>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="cv-section py-20" data-cv-section="projects">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="section-head reveal">
+          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">03 // SELECTED PROJECTS</span>
+          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Progetti</h2>
+          <p class="mt-3 text-slate-500 max-w-2xl">Prodotti digitali e software realizzati — demo live e repository pubbliche.</p>
+        </div>
+
+        <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <!-- Corner Pub -->
+          <article class="tilt bento reveal project-card" data-glow="#00f2fe">
+            <div class="bento-inner p-7 flex flex-col h-full">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="icon-chip text-neon-cyan"><i data-lucide="utensils" class="w-5 h-5"></i></div>
+                <div>
+                  <span class="font-mono text-[10px] tracking-widest text-neon-cyan">LIVE DEMO</span>
+                  <h3 class="font-bold text-lg text-white leading-tight">Corner Pub Giovinazzo</h3>
+                </div>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed flex-1">
+                Anteprima digitale / sito ufficiale per <strong class="text-slate-200">Corner Hamburgeria</strong> —
+                panini, birre artigianali e prenotazioni tavolo/eventi. Menù, promozioni, mappa, gestione allergeni
+                e flusso GDPR per le prenotazioni. Deploy su Render.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="chip chip-cyan">Web App</span>
+                <span class="chip chip-cyan">Prenotazioni</span>
+                <span class="chip chip-blue">Render</span>
+                <span class="chip chip-blue">Full-stack</span>
+              </div>
+              <a href="https://cornerpubgiovinazzo.onrender.com" target="_blank" rel="noopener noreferrer"
+                 class="magnetic btn-neon-solid mt-6 w-full text-center px-4 py-3 rounded-xl font-semibold text-sm" data-sfx>
+                <i data-lucide="external-link" class="w-4 h-4 inline -mt-0.5 mr-1"></i> Apri anteprima digitale
+              </a>
+            </div>
+          </article>
+
+          <!-- Smart Energy AI -->
+          <article class="tilt bento reveal project-card" data-glow="#7f00ff" style="--reveal-delay:.1s">
+            <div class="bento-inner p-7 flex flex-col h-full">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="icon-chip text-neon-violet"><i data-lucide="leaf" class="w-5 h-5"></i></div>
+                <div>
+                  <span class="font-mono text-[10px] tracking-widest text-[#b366ff]">OPEN SOURCE</span>
+                  <h3 class="font-bold text-lg text-white leading-tight">Smart Energy AI</h3>
+                </div>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed flex-1">
+                Piattaforma <strong class="text-slate-200">Smart Sustainability</strong> per monitoraggio e ottimizzazione
+                dei consumi energetici domestici. Backend Spring Boot, simulazione fotovoltaica realistica,
+                standby detection e assistente <strong class="text-slate-200">Smart Home AI</strong> con consigli
+                proattivi. Dashboard interattiva con grafici 24h.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="chip chip-violet">Java 21</span>
+                <span class="chip chip-violet">Spring Boot 3</span>
+                <span class="chip chip-violet">PostgreSQL</span>
+                <span class="chip chip-cyan">AI Assistant</span>
+                <span class="chip chip-blue">Vanilla JS</span>
+              </div>
+              <a href="https://github.com/sanfelix2004/smart-energy-ai-public" target="_blank" rel="noopener noreferrer"
+                 class="magnetic btn-neon mt-6 w-full text-center px-4 py-3 rounded-xl font-mono text-sm" data-sfx>
+                <i data-lucide="github" class="w-4 h-4 inline -mt-0.5 mr-1"></i> Vedi su GitHub
+              </a>
+            </div>
+          </article>
+
+          <!-- HACCP Software -->
+          <article class="tilt bento reveal project-card" data-glow="#4facfe" style="--reveal-delay:.2s">
+            <div class="bento-inner p-7 flex flex-col h-full">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="icon-chip text-neon-blue"><i data-lucide="clipboard-check" class="w-5 h-5"></i></div>
+                <div>
+                  <span class="font-mono text-[10px] tracking-widest text-neon-blue">IN PROGRESS · SWIFT</span>
+                  <h3 class="font-bold text-lg text-white leading-tight">HACCP Software</h3>
+                </div>
+              </div>
+              <p class="text-slate-400 text-sm leading-relaxed flex-1">
+                App iOS professionale per ristoranti e attività alimentari: checklist HACCP, reportistica,
+                dashboard analytics, tracciabilità e gestione utenti. Architettura modulare feature-based in
+                <strong class="text-slate-200">Swift</strong> (App · Core · Features · Resources).
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="chip chip-blue">Swift</span>
+                <span class="chip chip-blue">iOS</span>
+                <span class="chip chip-cyan">HACCP</span>
+                <span class="chip chip-violet">In Progress</span>
+                <span class="chip chip-blue">Modular Architecture</span>
+              </div>
+              <a href="https://github.com/sanfelix2004/haccp-software" target="_blank" rel="noopener noreferrer"
+                 class="magnetic btn-neon mt-6 w-full text-center px-4 py-3 rounded-xl font-mono text-sm" data-sfx>
+                <i data-lucide="github" class="w-4 h-4 inline -mt-0.5 mr-1"></i> Vedi su GitHub
+              </a>
+            </div>
+          </article>
 
         </div>
       </div>
     </section>
 
-    <!-- ===== INTERACTIVE CONSOLE ===== -->
-    <section id="console" class="py-24">
+    <!-- ===== TECH STACK ===== -->
+    <section id="stack" class="cv-section py-20" data-cv-section="stack">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="section-head reveal">
+          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">04 // SYSTEM CAPABILITIES</span>
+          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Tech Stack Matrix</h2>
+          <p class="mt-3 text-slate-500 max-w-2xl">Moduli tecnologici caricati e operativi. Passa il cursore sulle celle per l'analisi HUD.</p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-6 gap-5">
+          <div class="tilt bento md:col-span-4 reveal" data-glow="#00f2fe">
+            <div class="bento-inner p-7">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="icon-chip text-neon-cyan"><i data-lucide="server" class="w-5 h-5"></i></div>
+                <h3 class="font-bold text-lg text-white">Backend &amp; Core</h3>
+                <span class="ml-auto font-mono text-[10px] text-neon-cyan/70 tracking-widest">MODULE: PRIMARY</span>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="chip chip-cyan">Java</span>
+                <span class="chip chip-cyan">Spring Boot</span>
+                <span class="chip chip-cyan">Spring Cloud</span>
+                <span class="chip chip-cyan">Spring Data JPA</span>
+                <span class="chip chip-cyan">Spring Security</span>
+                <span class="chip chip-cyan">OpenAPI 3.0 / REST API</span>
+                <span class="chip chip-cyan">Maven</span>
+                <span class="chip chip-cyan">C</span>
+                <span class="chip chip-cyan">C++</span>
+                <span class="chip chip-cyan">C#</span>
+                <span class="chip chip-cyan">Python</span>
+              </div>
+              <div class="mt-6 skill-bars space-y-3 font-mono text-[11px]">
+                <div><div class="flex justify-between text-slate-500 mb-1"><span>JAVA / SPRING ECOSYSTEM</span><span class="text-neon-cyan">██ 92%</span></div><div class="bar"><span style="--w:92%"></span></div></div>
+                <div><div class="flex justify-between text-slate-500 mb-1"><span>REST API DESIGN / OPENAPI</span><span class="text-neon-cyan">██ 88%</span></div><div class="bar"><span style="--w:88%"></span></div></div>
+                <div><div class="flex justify-between text-slate-500 mb-1"><span>C / C++ / PYTHON</span><span class="text-neon-cyan">██ 74%</span></div><div class="bar"><span style="--w:74%"></span></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tilt bento md:col-span-2 md:row-span-2 reveal" data-glow="#7f00ff" style="--reveal-delay:.1s">
+            <div class="bento-inner p-7 h-full">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="icon-chip text-neon-violet"><i data-lucide="cloud" class="w-5 h-5"></i></div>
+                <h3 class="font-bold text-lg text-white">Cloud, Database<br/>&amp; Infrastruttura</h3>
+              </div>
+              <ul class="space-y-3 font-mono text-[12.5px] text-slate-400">
+                <li class="stack-li"><i data-lucide="box" class="w-3.5 h-3.5 text-neon-violet"></i> AWS SQS · SNS · S3</li>
+                <li class="stack-li"><i data-lucide="database" class="w-3.5 h-3.5 text-neon-violet"></i> Amazon DynamoDB</li>
+                <li class="stack-li"><i data-lucide="key-round" class="w-3.5 h-3.5 text-neon-violet"></i> AWS Parameter Store</li>
+                <li class="stack-li"><i data-lucide="zap" class="w-3.5 h-3.5 text-neon-violet"></i> Redis</li>
+                <li class="stack-li"><i data-lucide="database-zap" class="w-3.5 h-3.5 text-neon-violet"></i> PostgreSQL · SQL &amp; NoSQL</li>
+                <li class="stack-li"><i data-lucide="container" class="w-3.5 h-3.5 text-neon-violet"></i> Docker</li>
+                <li class="stack-li"><i data-lucide="terminal" class="w-3.5 h-3.5 text-neon-violet"></i> Linux (Ubuntu / Kali)</li>
+              </ul>
+              <div class="mt-6 radar-wrap">
+                <canvas id="radar-canvas" width="260" height="260" class="mx-auto"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="tilt bento md:col-span-2 reveal" data-glow="#4facfe" style="--reveal-delay:.2s">
+            <div class="bento-inner p-7">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="icon-chip text-neon-blue"><i data-lucide="smartphone" class="w-5 h-5"></i></div>
+                <h3 class="font-bold text-lg text-white">Frontend &amp; Mobile</h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="chip chip-blue">JavaScript</span>
+                <span class="chip chip-blue">TypeScript</span>
+                <span class="chip chip-blue">HTML5 / CSS3</span>
+                <span class="chip chip-blue">PHP</span>
+                <span class="chip chip-blue">Angular</span>
+                <span class="chip chip-blue">React</span>
+                <span class="chip chip-blue">Swift / iOS</span>
+                <span class="chip chip-blue">Flutter &amp; Dart</span>
+                <span class="chip chip-blue">Android App</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tilt bento md:col-span-2 reveal" data-glow="#00f2fe" style="--reveal-delay:.25s">
+            <div class="bento-inner p-7">
+              <div class="flex items-center gap-3 mb-5">
+                <div class="icon-chip text-neon-cyan"><i data-lucide="git-branch" class="w-5 h-5"></i></div>
+                <h3 class="font-bold text-lg text-white">Architecture &amp; Tools</h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="chip chip-cyan">Microservizi</span>
+                <span class="chip chip-cyan">Sistemi Distribuiti</span>
+                <span class="chip chip-cyan">Git / GitHub</span>
+                <span class="chip chip-cyan">Postman</span>
+                <span class="chip chip-cyan">Swagger</span>
+                <span class="chip chip-cyan">JIRA / Confluence</span>
+                <span class="chip chip-cyan">CVP</span>
+                <span class="chip chip-cyan">ThePlatform (MPX)</span>
+                <span class="chip chip-violet">AI Generativa</span>
+                <span class="chip chip-violet">Machine Learning</span>
+                <span class="chip chip-violet">Cybersecurity base (Kali)</span>
+                <span class="chip chip-violet">Matlab</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CERTIFICATIONS ===== -->
+    <section id="certs" class="cv-section py-20" data-cv-section="certs">
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="section-head reveal">
+          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">05 // VERIFIED CREDENTIALS</span>
+          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Certificazioni</h2>
+          <p class="mt-3 text-slate-500 max-w-2xl">Credenziali verificate — lingue, networking e cybersecurity.</p>
+        </div>
+
+        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 font-mono text-[12px] reveal">
+          <div class="cert-card"><i data-lucide="graduation-cap" class="w-4 h-4 text-neon-cyan"></i> Cambridge English B2</div>
+          <div class="cert-card"><i data-lucide="code-2" class="w-4 h-4 text-neon-cyan"></i> Cisco CPA: Programming Essentials in C++</div>
+          <div class="cert-card"><i data-lucide="shield-check" class="w-4 h-4 text-neon-cyan"></i> Cisco Introduction to Cybersecurity</div>
+          <div class="cert-card"><i data-lucide="terminal-square" class="w-4 h-4 text-neon-cyan"></i> Cisco NDG Linux Unhatched</div>
+          <div class="cert-card"><i data-lucide="network" class="w-4 h-4 text-neon-cyan"></i> Cisco Introduction to Packet Tracer</div>
+          <div class="cert-card"><i data-lucide="lightbulb" class="w-4 h-4 text-neon-cyan"></i> Cisco Entrepreneurship</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONSOLE ===== -->
+    <section id="console" class="cv-section py-20" data-cv-section="console">
       <div class="mx-auto max-w-4xl px-6">
         <div class="section-head reveal text-center">
-          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">03 // DIRECT ACCESS</span>
+          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">06 // DIRECT ACCESS</span>
           <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Console Interattiva</h2>
           <p class="mt-3 text-slate-500">Interroga direttamente il sistema. Digita <code class="text-neon-cyan">help</code> per la lista dei comandi.</p>
         </div>
@@ -420,11 +531,11 @@
       </div>
     </section>
 
-    <!-- ===== CONTACT / ACTION BAR ===== -->
-    <section id="contact" class="py-24 pb-32">
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="cv-section py-20 pb-32" data-cv-section="contact">
       <div class="mx-auto max-w-4xl px-6 text-center">
         <div class="glass rounded-3xl p-10 sm:p-14 reveal contact-panel" data-glow="#00f2fe">
-          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">04 // ESTABLISH CONNECTION</span>
+          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">07 // ESTABLISH CONNECTION</span>
           <h2 class="mt-3 text-4xl sm:text-5xl font-black shimmer-text inline-block">Inizializza il Contatto</h2>
           <p class="mt-4 text-slate-400 max-w-xl mx-auto">
             Disponibile per ruoli ad alto impatto su backend, cloud e sistemi distribuiti.

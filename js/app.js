@@ -392,11 +392,12 @@ document.getElementById('footer-download-cv').addEventListener('click', download
       '  <span class="c-ok">help</span>         → mostra questa lista',
       '  <span class="c-ok">whoami</span>       → identità e ruolo',
       '  <span class="c-ok">skills</span>       → tech stack completo',
-      '  <span class="c-ok">experience</span>   → mission log professionale',
+      '  <span class="c-ok">experience</span>   → esperienza lavorativa',
       '  <span class="c-ok">education</span>    → percorso accademico',
+      '  <span class="c-ok">projects</span>     → progetti (Corner, Smart Energy AI, HACCP)',
       '  <span class="c-ok">certs</span>        → certificazioni',
       '  <span class="c-ok">contact</span>      → canali di contatto',
-      '  <span class="c-ok">download-cv</span>  → scarica il CV',
+      '  <span class="c-ok">download-cv</span>  → scarica il CV PDF',
       '  <span class="c-ok">clear</span>        → pulisce il terminale',
     ],
     whoami: () => [
@@ -407,7 +408,7 @@ document.getElementById('footer-download-cv').addEventListener('click', download
     skills: () => [
       '<span class="c-cyan">[BACKEND & CORE]</span>     Java · Spring Boot · Spring Cloud · Spring Data JPA · Spring Security · C · C++ · C# · Python · OpenAPI 3.0/REST · Maven',
       '<span class="c-violet">[CLOUD & INFRA]</span>     AWS (SQS · SNS · S3 · DynamoDB · Parameter Store) · Redis · PostgreSQL · SQL & NoSQL · Docker · Linux (Ubuntu/Kali)',
-      '<span class="c-cyan">[FRONTEND & MOBILE]</span> JavaScript · TypeScript · HTML5/CSS3 · PHP · Angular · React · Flutter & Dart · Android App',
+      '<span class="c-cyan">[FRONTEND & MOBILE]</span> JavaScript · TypeScript · HTML5/CSS3 · PHP · Angular · React · Swift/iOS · Flutter & Dart · Android App',
       '<span class="c-violet">[AI & EMERGING]</span>     AI Generativa · Machine Learning · Reti Neurali · Cybersecurity base (Kali) · Matlab',
       '<span class="c-cyan">[TOOLS]</span>              Git/GitHub · Postman · Swagger · JIRA/Confluence · CVP · ThePlatform (MPX)',
     ],
@@ -428,6 +429,17 @@ document.getElementById('footer-download-cv').addEventListener('click', download
       '  <span class="c-dim">AI · Machine Learning · Reti Logiche e Neurali · Algoritmi · OOP · Basi di Dati · Sistemi Operativi · Reti</span>',
       '<span class="c-violet">▸ Diploma</span> — Informatica e Telecomunicazioni · IISS Volta De Gemmis, Bitonto [09/2018 – 06/2023] — <span class="c-ok">100/100 con Lode</span>',
       '  <span class="c-dim">Reti TCP/IP · routing · sicurezza · Linux · Java · C/C++ · Python · PHP · Assembly x86 · Web dev</span>',
+    ],
+    projects: () => [
+      '<span class="c-ok">● LIVE</span> <span class="c-cyan">Corner Pub Giovinazzo</span> — anteprima digitale / sito ufficiale hamburgeria &amp; pub',
+      '  > Menù, prenotazioni tavolo/eventi, allergeni, GDPR · Deploy su Render',
+      '  → <a class="underline text-white hover:text-neon-cyan" href="https://cornerpubgiovinazzo.onrender.com" target="_blank" rel="noopener">cornerpubgiovinazzo.onrender.com</a>',
+      '<span class="c-ok">● OPEN SOURCE</span> <span class="c-violet">Smart Energy AI</span> — Smart Sustainability (monitoraggio energia + AI)',
+      '  > Java 21 · Spring Boot 3 · PostgreSQL · Smart Home AI · dashboard 24h',
+      '  → <a class="underline text-white hover:text-neon-cyan" href="https://github.com/sanfelix2004/smart-energy-ai-public" target="_blank" rel="noopener">github.com/sanfelix2004/smart-energy-ai-public</a>',
+      '<span class="c-warn">● IN PROGRESS</span> <span class="c-cyan">HACCP Software</span> — app iOS per ristoranti (Swift)',
+      '  > Checklist HACCP · report · dashboard · architettura feature-based',
+      '  → <a class="underline text-white hover:text-neon-cyan" href="https://github.com/sanfelix2004/haccp-software" target="_blank" rel="noopener">github.com/sanfelix2004/haccp-software</a>',
     ],
     certs: () => [
       '<span class="c-ok">✔</span> Cambridge English B2',
@@ -514,6 +526,69 @@ document.getElementById('footer-download-cv').addEventListener('click', download
 })();
 
 /* =====================================================
-   9. Lucide icons init
+   9. CV MENU — filtra le sezioni del curriculum
+   ===================================================== */
+(function cvMenuEngine() {
+  const tabs = document.querySelectorAll('[data-cv-show]');
+  const sections = document.querySelectorAll('[data-cv-section]');
+  let current = 'all';
+
+  function showSection(id) {
+    current = id;
+    document.querySelectorAll('#cv-menu-buttons .cv-tab').forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.cvShow === id);
+    });
+    sections.forEach((sec) => {
+      const match = id === 'all' || sec.dataset.cvSection === id;
+      sec.classList.toggle('is-hidden', !match);
+      if (match) {
+        sec.querySelectorAll('.reveal').forEach((el) => el.classList.add('in'));
+        sec.querySelectorAll('.metric-value[data-count]').forEach((el) => {
+          if (!el.dataset.animated) {
+            el.dataset.animated = '1';
+            const target = parseInt(el.dataset.count, 10);
+            const suffix = el.dataset.suffix || '';
+            const start = performance.now();
+            (function step(now) {
+              const p = Math.min((now - start) / 1200, 1);
+              el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
+              if (p < 1) requestAnimationFrame(step);
+            })(start);
+          }
+        });
+      }
+    });
+    if (id !== 'all') {
+      const target = document.getElementById(id) || document.getElementById('cv-menu');
+      if (target) {
+        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 40);
+      }
+    } else {
+      document.getElementById('cv-menu')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    if (window.lucide) lucide.createIcons();
+  }
+
+  tabs.forEach((el) => {
+    el.addEventListener('click', (e) => {
+      const id = el.dataset.cvShow;
+      if (!id) return;
+      // anchors with data-cv-show should also filter
+      if (el.tagName === 'A') e.preventDefault();
+      showSection(id);
+    });
+  });
+
+  // deep-link support: #projects, #experience, etc.
+  const hash = location.hash.replace('#', '');
+  if (hash && document.querySelector(`[data-cv-section="${hash}"]`)) {
+    showSection(hash);
+  }
+
+  window.showCvSection = showSection;
+})();
+
+/* =====================================================
+   10. Lucide icons init
    ===================================================== */
 lucide.createIcons();

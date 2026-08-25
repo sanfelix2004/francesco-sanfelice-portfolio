@@ -44,6 +44,57 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
+/* ---------- CV Section Menu ---------- */
+.cv-menu-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 242, 254, 0.3) transparent;
+}
+.cv-menu-scroll::-webkit-scrollbar { height: 4px; }
+.cv-menu-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 242, 254, 0.3);
+  border-radius: 4px;
+}
+
+.cv-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 8px 14px;
+  border-radius: 10px;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.cv-tab:hover {
+  color: var(--cyan);
+  border-color: rgba(0, 242, 254, 0.35);
+}
+.cv-tab.active {
+  color: #030308;
+  background: linear-gradient(120deg, var(--cyan), var(--blue));
+  border-color: transparent;
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.35);
+  font-weight: 600;
+}
+
+.cv-section {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.cv-section.is-hidden {
+  display: none;
+}
+
+.project-card .bento-inner {
+  min-height: 100%;
+}
+
 /* ---------- Nav ---------- */
 .nav-link {
   position: relative;
@@ -164,6 +215,7 @@ body {
 #console-output .c-violet { color: #b366ff; }
 #console-output .c-dim    { color: #64748b; }
 #console-output .c-err    { color: #f87171; }
+#console-output .c-warn   { color: #fbbf24; }
 #console-output .c-prompt { color: var(--cyan); }
 
 /* ---------- Bento grid / tilt cards ---------- */
