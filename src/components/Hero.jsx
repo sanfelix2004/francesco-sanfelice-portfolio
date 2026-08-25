@@ -16,15 +16,14 @@ export default function Hero() {
           </div>
         </Reveal>
 
-        {/* Center avatar — interactive */}
-        <Reveal className="relative order-1 mx-auto w-full max-w-[420px] lg:order-2" delay={0.05}>
+        {/* Center avatar — interactive (not wrapped in opacity reveal so hover always works) */}
+        <div className="relative order-1 mx-auto w-full max-w-[420px] lg:order-2">
           <div
             className="pointer-events-none absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-glow/70 blur-3xl"
             aria-hidden
           />
           <InteractiveAvatar />
-          <p className="mt-3 text-center text-xs text-white/35 lg:hidden">Tap the avatar to say hi</p>
-        </Reveal>
+        </div>
 
         {/* Right bio */}
         <Reveal className="order-3 mx-auto max-w-md text-center lg:mx-0 lg:justify-self-start lg:text-left" delay={0.1}>

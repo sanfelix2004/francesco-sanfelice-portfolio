@@ -16,7 +16,7 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/francesco-sanfelice-di-bagnoli-006598230/',
   portfolio: 'https://sanfelix2004.github.io/francesco-sanfelice-portfolio/',
   cvUrl: `${import.meta.env.BASE_URL}Francesco-Sanfelice-CV.pdf`,
-  avatar: `${import.meta.env.BASE_URL}images/avatar.png?v=2`,
+  avatar: `${import.meta.env.BASE_URL}images/avatar.png?v=3`,
   bio:
     "Hi, I'm Francesco — a Junior Software Engineer focused on scalable backend microservices, cloud-native systems and AI-powered products. I work daily with Java, Spring and AWS, and I love shipping reliable software that holds up under real traffic.",
   statementTitle: 'Building reliable backends, cloud systems and high-impact digital products.',

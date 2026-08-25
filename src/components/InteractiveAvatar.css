@@ -1,0 +1,155 @@
+.avatar-hit {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.avatar-stage {
+  position: relative;
+  z-index: 1;
+}
+
+.avatar-img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 1.5rem;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.avatar-hand {
+  position: absolute;
+  right: 6%;
+  top: 22%;
+  z-index: 5;
+  font-size: clamp(2.8rem, 8vw, 4.2rem);
+  opacity: 0;
+  transform: scale(0.4) rotate(-30deg);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.45));
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.avatar-bubble {
+  position: absolute;
+  left: 50%;
+  top: 6%;
+  z-index: 6;
+  width: min(15rem, 88%);
+  padding: 0.85rem 1rem;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(61, 220, 132, 0.55);
+  background: #101916;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translate(-50%, 12px) scale(0.92);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  text-align: left;
+}
+
+.avatar-bubble strong {
+  display: block;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 0.15rem;
+}
+
+.avatar-bubble span {
+  display: block;
+  color: #a0a0a0;
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+.avatar-name {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 8%;
+  z-index: 4;
+  padding: 0 0.5rem;
+  pointer-events: none;
+}
+
+.avatar-tag {
+  margin: 0 0 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #3ddc84;
+}
+
+.avatar-name h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 8vw, 3.75rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #fff 0%, #c9d0d6 55%, #8e98a1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.avatar-name h1 span {
+  display: block;
+  margin-top: 0.15em;
+  font-size: 0.42em;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.8);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.8);
+}
+
+.avatar-hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ACTIVE / GREETING STATE */
+.avatar-hit.is-greeting .avatar-img {
+  transform: translateY(-6px) scale(1.02);
+  filter: brightness(1.08) saturate(1.1);
+}
+
+.avatar-hit.is-greeting .avatar-hand {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  animation: wave-hand 0.7s ease-in-out infinite;
+}
+
+.avatar-hit.is-greeting .avatar-bubble {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+@keyframes wave-hand {
+  0%,
+  100% {
+    transform: scale(1) rotate(-18deg);
+  }
+  50% {
+    transform: scale(1.08) rotate(22deg);
+  }
+}
+
+@media (min-width: 640px) {
+  .avatar-tag {
+    font-size: 0.75rem;
+  }
+}
