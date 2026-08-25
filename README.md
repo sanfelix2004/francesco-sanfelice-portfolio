@@ -1,44 +1,28 @@
-# Francesco Sanfelice di Bagnoli — Portfolio / CV
+# Francesco Sanfelice di Bagnoli — CV / Portfolio
 
-> **Junior Software Engineer** | Backend & Cloud Systems (Java / Spring / AWS) | AI & Distributed Systems Enthusiast
+Junior Software Engineer · Backend & Cloud Systems (Java / Spring / AWS)
 
-Sito CV/portfolio single-page in stile **Futuristic Cyber-Engine**: glassmorphism scuro, HUD olografico, particelle canvas, griglia 3D prospettica e terminale interattivo.
+Portfolio CV professionale a pagina singola, con menu a sezioni per filtrare esperienza, studi, progetti, competenze e certificazioni.
 
-## Demo locale
+## Live
 
-Nessuna build necessaria — è HTML/CSS/JS puro:
+https://sanfelix2004.github.io/francesco-sanfelice-portfolio/
+
+## Locale
 
 ```bash
-# opzione 1: apri direttamente
 open index.html
-
-# opzione 2: server locale
+# oppure
 python3 -m http.server 8000
-# → http://localhost:8000
 ```
 
-## Stack
+## Contenuti
 
-- **HTML5** + **Tailwind CSS** (CDN)
-- **Vanilla JavaScript** (ES2020+) — nessun framework, nessuna dipendenza npm
-- **Lucide Icons** (CDN)
-- **Canvas 2D** — particelle connesse, griglia prospettica, radar skill
+- Esperienza: Fincons Group (Mediaset Infinity), Lagardère, Erasmus Irlanda
+- Studi: Università Guglielmo Marconi (AI) · Diploma Volta De Gemmis (100/100 Lode)
+- Progetti: [Corner Pub](https://cornerpubgiovinazzo.onrender.com) · [Smart Energy AI](https://github.com/sanfelix2004/smart-energy-ai-public) · [HACCP Software](https://github.com/sanfelix2004/haccp-software)
+- Download CV: `assets/SanfelicediBagnoliFrancesco-CV-ITA.pdf`
 
-## Feature
+## Stack del sito
 
-| Sezione | Dettagli |
-|---|---|
-| Hero | Badge di stato animato, titolo con gradient shimmer, terminale con boot sequence |
-| Tech Stack Matrix | Bento grid con tilt 3D, glow reattivo al cursore, radar canvas, skill bar animate |
-| Mission Logs | Timeline verticale stile pipeline con metriche animate e tag tecnologici |
-| Console interattiva | Comandi: `help`, `whoami`, `skills`, `experience`, `education`, `certs`, `contact`, `download-cv`, `clear` |
-| Action Bar | Pulsanti magnetici con micro-suoni WebAudio, mailto diretto, download del CV in PDF |
-
-## Contatti
-
-- **Email:** sanfelicefrancesco004@gmail.com
-- **Località:** Giovinazzo (Bari), Italia
-
-## Deploy
-
-Il sito è completamente statico: funziona out-of-the-box su **GitHub Pages**, **Netlify** o **Vercel** (vedi guida nel repository / nella chat di generazione).
+HTML · CSS · Vanilla JS (nessuna build, nessun npm)

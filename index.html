@@ -1,571 +1,317 @@
 <!DOCTYPE html>
-<html lang="it" class="scroll-smooth">
+<html lang="it">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Francesco Sanfelice di Bagnoli — CV / Portfolio | Software Engineer</title>
-  <meta name="description" content="CV interattivo di Francesco Sanfelice di Bagnoli — Junior Software Engineer (Java/Spring/AWS). Progetti: Corner Pub, Smart Energy AI, HACCP Software." />
+  <title>Francesco Sanfelice di Bagnoli — Software Engineer</title>
+  <meta name="description" content="CV e portfolio di Francesco Sanfelice di Bagnoli — Junior Software Engineer specializzato in Java, Spring Boot, AWS e sistemi distribuiti." />
+  <meta name="theme-color" content="#0f6e6a" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            space: '#08080d',
-            panel: '#0d0d16',
-            neon: { cyan: '#00f2fe', blue: '#4facfe', violet: '#7f00ff' },
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
-          },
-        },
-      },
-    };
-  </script>
-
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
 
-<body class="bg-space text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-neon-cyan/30 selection:text-white">
-
-  <canvas id="bg-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
-  <div class="fixed inset-0 z-0 pointer-events-none bg-gradient-to-b from-transparent via-transparent to-space"></div>
-  <div id="scanline" class="fixed inset-0 z-0 pointer-events-none"></div>
-
-  <!-- ===== TOP NAV ===== -->
-  <header class="fixed top-0 inset-x-0 z-50">
-    <nav class="glass mx-auto mt-4 max-w-6xl rounded-2xl px-5 py-3 flex items-center justify-between">
-      <a href="#top" class="flex items-center gap-3 group" data-cv-show="all">
-        <div class="hud-logo grid place-items-center w-9 h-9 rounded-lg font-mono text-sm font-bold text-neon-cyan">FS</div>
-        <span class="font-mono text-sm tracking-widest text-slate-400 group-hover:text-neon-cyan transition-colors hidden sm:inline">sanfelice<span class="text-neon-cyan">.dev</span></span>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">FS</span>
+        <span class="brand-text">Francesco Sanfelice</span>
       </a>
-      <a href="mailto:sanfelicefrancesco004@gmail.com" class="magnetic btn-neon font-mono text-xs px-4 py-2 rounded-lg" data-sfx>
-        <i data-lucide="send" class="w-3.5 h-3.5 inline -mt-0.5"></i> HIRE_ME
-      </a>
-    </nav>
+      <nav class="header-nav" aria-label="Azioni rapide">
+        <a class="btn btn-ghost" href="assets/SanfelicediBagnoliFrancesco-CV-ITA.pdf" download>Scarica CV</a>
+        <a class="btn btn-primary" href="mailto:sanfelicefrancesco004@gmail.com">Contattami</a>
+      </nav>
+    </div>
   </header>
 
-  <main id="top" class="relative z-10">
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero shell">
+      <p class="eyebrow reveal">Software Engineer · Backend &amp; Cloud · Bari, Italia</p>
+      <h1 class="hero-name reveal">
+        Francesco<br />Sanfelice<br /><em>di Bagnoli</em>
+      </h1>
+      <p class="hero-role reveal">Junior Software Engineer · Java / Spring / AWS</p>
+      <p class="hero-bio reveal">
+        Progetto e sviluppo microservizi backend scalabili in ambienti cloud-native.
+        Esperienza su streaming OTT ad alto traffico nell’ecosistema Mediaset Infinity,
+        con forte interesse per architettura dei sistemi, AI e software engineering moderno.
+      </p>
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="mailto:sanfelicefrancesco004@gmail.com">Scrivimi</a>
+        <a class="btn btn-secondary" href="#projects">Vedi progetti</a>
+        <a class="btn btn-ghost" href="assets/SanfelicediBagnoliFrancesco-CV-ITA.pdf" download>Download CV (PDF)</a>
+      </div>
+      <ul class="hero-meta reveal">
+        <li>Giovinazzo (Bari), Italia</li>
+        <li>Inglese B2 — Cambridge</li>
+        <li>Disponibile per ruoli high-impact</li>
+      </ul>
+    </section>
 
-    <!-- ===== HERO ===== -->
-    <section class="min-h-[88vh] flex items-center pt-28 pb-10">
-      <div class="mx-auto max-w-6xl px-6 w-full grid lg:grid-cols-2 gap-12 items-center">
-        <div class="reveal">
-          <div class="status-badge inline-flex items-center gap-2.5 rounded-full px-4 py-1.5 font-mono text-[11px] tracking-[0.2em] text-neon-cyan mb-7">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-neon-cyan"></span>
-            </span>
-            STATUS: AVAILABLE FOR HIGH-IMPACT ROLES
+    <!-- CV MENU -->
+    <nav class="cv-nav shell" id="cv-menu" aria-label="Sezioni del CV">
+      <p class="cv-nav-label">Sezioni</p>
+      <div class="cv-nav-track" id="cv-menu-buttons">
+        <button type="button" class="cv-tab active" data-cv-show="all">Tutto</button>
+        <button type="button" class="cv-tab" data-cv-show="experience">Esperienza</button>
+        <button type="button" class="cv-tab" data-cv-show="education">Studi</button>
+        <button type="button" class="cv-tab" data-cv-show="projects">Progetti</button>
+        <button type="button" class="cv-tab" data-cv-show="skills">Competenze</button>
+        <button type="button" class="cv-tab" data-cv-show="certs">Certificazioni</button>
+        <button type="button" class="cv-tab" data-cv-show="contact">Contatti</button>
+      </div>
+    </nav>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="cv-section shell section" data-cv-section="experience">
+      <header class="section-head reveal">
+        <p class="section-index">01</p>
+        <div>
+          <h2>Esperienza lavorativa</h2>
+          <p class="section-lead">Percorso professionale tra backend cloud-native e contesti internazionali.</p>
+        </div>
+      </header>
+
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <div class="timeline-meta">
+            <span class="badge badge-live">In corso</span>
+            <time>04/2025 — Attuale</time>
           </div>
-
-          <p class="font-mono text-xs tracking-[0.25em] text-slate-500 mb-3">CV INTERATTIVO // DIGITAL RESUME</p>
-          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.02] tracking-tight">
-            <span class="shimmer-text">Francesco</span><br />
-            <span class="shimmer-text">Sanfelice</span><br />
-            <span class="text-slate-500 text-3xl sm:text-4xl font-bold">di Bagnoli</span>
-          </h1>
-
-          <p class="mt-6 font-mono text-sm text-neon-blue tracking-wide">
-            Junior Software Engineer <span class="text-slate-600">|</span> Backend &amp; Cloud Systems
-            <span class="text-slate-600">|</span> Java / Spring / AWS
-            <span class="text-slate-600">|</span> AI &amp; Distributed Systems Enthusiast
+          <h3>Software Engineer</h3>
+          <p class="org">Fincons Group — Bari, Italia</p>
+          <ul class="bullets">
+            <li>Progettazione e sviluppo di microservizi backend in Java e Spring per l’ecosistema OTT Mediaset Infinity (tenant ITA ed ESP).</li>
+            <li>Gestione, versionamento e documentazione di API RESTful con OpenAPI 3.0 / Swagger.</li>
+            <li>Analisi e risoluzione di bug complessi in scenari distribuiti ad alto traffico.</li>
+            <li>Testing manuale e di integrazione con Swagger e curl.</li>
+          </ul>
+          <p class="tags">
+            <span>Java</span><span>Spring Boot</span><span>Spring Cloud</span><span>Spring Data JPA</span><span>Spring Security</span>
+            <span>Redis</span><span>DynamoDB</span><span>AWS SQS</span><span>AWS SNS</span><span>AWS S3</span><span>Parameter Store</span>
+            <span>OpenAPI</span><span>CVP</span><span>ThePlatform MPX</span><span>Maven</span><span>GitHub</span>
           </p>
+        </article>
 
-          <p class="mt-5 text-slate-400 leading-relaxed max-w-xl">
-            Junior Software Engineer specializzato nella progettazione e sviluppo di microservizi backend scalabili
-            in ecosistemi distribuiti e cloud-native. Esperienza diretta nello streaming OTT ad alto traffico
-            (ecosistema <span class="text-slate-200 font-medium">Mediaset Infinity</span>), forte orientamento per
-            l'architettura di sistemi, l'Intelligenza Artificiale e l'ingegneria del software moderna.
+        <article class="timeline-item reveal">
+          <div class="timeline-meta">
+            <span class="badge">Completata</span>
+            <time>06/2024 — 09/2024</time>
+          </div>
+          <h3>Commesso di negozio specializzato</h3>
+          <p class="org">Lagardère Travel Retail — Aeroporto Bari-Palese</p>
+          <p class="prose">Comunicazione quotidiana in inglese con clienti internazionali, gestione duty-free e operazioni di cassa.</p>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-meta">
+            <span class="badge">Erasmus+</span>
+            <time>09/2022 — 10/2022</time>
+          </div>
+          <h3>Commesso di negozio specializzato</h3>
+          <p class="org">OMG @Zhivago — Galway, Irlanda</p>
+          <p class="prose">Esperienza lavorativa all’estero in ambiente madrelingua: accoglienza clienti e comunicazione fluente in inglese.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="cv-section shell section" data-cv-section="education">
+      <header class="section-head reveal">
+        <p class="section-index">02</p>
+        <div>
+          <h2>Percorso di studi</h2>
+          <p class="section-lead">Formazione tecnica e accademica, con focus crescente su AI e sistemi.</p>
+        </div>
+      </header>
+
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <div class="timeline-meta">
+            <span class="badge badge-live">In corso</span>
+            <time>06/2026 — Attuale</time>
+          </div>
+          <h3>Laurea Triennale — Ingegneria Informatica e AI</h3>
+          <p class="org">Università degli Studi Guglielmo Marconi — Roma</p>
+          <p class="prose">
+            Percorso iniziato al Politecnico di Bari (Ingegneria Informatica e dell’Automazione) e proseguito
+            presso l’Università Telematica Guglielmo Marconi con trasferimento carriera e convalida CFU.
+            Focus su sviluppo software, Intelligenza Artificiale &amp; Data Science, sistemi e reti.
           </p>
-
-          <div class="mt-8 flex flex-wrap items-center gap-4">
-            <a href="mailto:sanfelicefrancesco004@gmail.com" class="magnetic btn-neon-solid px-6 py-3 rounded-xl font-semibold text-sm" data-sfx>
-              <i data-lucide="mail" class="w-4 h-4 inline -mt-0.5 mr-1"></i> Contattami
-            </a>
-            <button id="hero-download-cv" class="magnetic btn-neon px-6 py-3 rounded-xl font-mono text-sm" data-sfx>
-              <i data-lucide="file-down" class="w-4 h-4 inline -mt-0.5 mr-1"></i> download-cv
-            </button>
-            <a href="#projects" class="magnetic px-5 py-3 rounded-xl font-mono text-sm text-slate-400 hover:text-neon-cyan transition-colors" data-sfx data-cv-show="projects">
-              <i data-lucide="folder-code" class="w-4 h-4 inline -mt-0.5 mr-1"></i> vedi progetti_
-            </a>
-          </div>
-
-          <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-slate-500">
-            <span><i data-lucide="map-pin" class="w-3.5 h-3.5 inline -mt-0.5 text-neon-violet"></i> Giovinazzo (Bari), Italia</span>
-            <span><i data-lucide="languages" class="w-3.5 h-3.5 inline -mt-0.5 text-neon-violet"></i> Inglese B2 — Cambridge Certified</span>
-          </div>
-        </div>
-
-        <div class="reveal" style="--reveal-delay:.15s">
-          <div class="terminal-window glass rounded-2xl overflow-hidden">
-            <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-white/[0.02]">
-              <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
-              <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
-              <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
-              <span class="ml-3 font-mono text-[11px] text-slate-500 tracking-widest">fsanfelice@cyber-engine: ~/boot</span>
-            </div>
-            <div id="boot-terminal" class="p-5 font-mono text-[13px] leading-relaxed h-[340px] overflow-hidden text-slate-300"></div>
-          </div>
-          <p class="mt-3 text-center font-mono text-[11px] text-slate-600 tracking-widest">// SYSTEM BOOT SEQUENCE — PROFILE v2026.08</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== CV MENU — scegli cosa vedere ===== -->
-    <div id="cv-menu" class="sticky top-[72px] z-40 px-4 pb-2">
-      <div class="glass mx-auto max-w-6xl rounded-2xl px-3 py-2.5">
-        <div class="flex items-center gap-2 mb-2 px-2">
-          <i data-lucide="layout-list" class="w-3.5 h-3.5 text-neon-cyan"></i>
-          <span class="font-mono text-[10px] tracking-[0.25em] text-slate-500">CV SECTIONS — SCEGLI COSA VEDERE</span>
-        </div>
-        <div class="flex gap-2 overflow-x-auto pb-1 cv-menu-scroll" id="cv-menu-buttons">
-          <button type="button" class="cv-tab active" data-cv-show="all"><i data-lucide="layers" class="w-3.5 h-3.5"></i> Tutto</button>
-          <button type="button" class="cv-tab" data-cv-show="experience"><i data-lucide="briefcase" class="w-3.5 h-3.5"></i> Esperienza</button>
-          <button type="button" class="cv-tab" data-cv-show="education"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i> Studi</button>
-          <button type="button" class="cv-tab" data-cv-show="projects"><i data-lucide="folder-code" class="w-3.5 h-3.5"></i> Progetti</button>
-          <button type="button" class="cv-tab" data-cv-show="stack"><i data-lucide="cpu" class="w-3.5 h-3.5"></i> Stack</button>
-          <button type="button" class="cv-tab" data-cv-show="certs"><i data-lucide="badge-check" class="w-3.5 h-3.5"></i> Certificazioni</button>
-          <button type="button" class="cv-tab" data-cv-show="console"><i data-lucide="terminal" class="w-3.5 h-3.5"></i> Console</button>
-          <button type="button" class="cv-tab" data-cv-show="contact"><i data-lucide="mail" class="w-3.5 h-3.5"></i> Contatti</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== EXPERIENCE ===== -->
-    <section id="experience" class="cv-section py-20" data-cv-section="experience">
-      <div class="mx-auto max-w-6xl px-6">
-        <div class="section-head reveal">
-          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">01 // WORK EXPERIENCE</span>
-          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Esperienza Lavorativa</h2>
-          <p class="mt-3 text-slate-500 max-w-2xl">Missioni professionali sul campo — backend, cloud e contesti internazionali.</p>
-        </div>
-
-        <div class="timeline mt-14 relative">
-          <article class="tl-item reveal">
-            <div class="tl-node tl-node-active"><i data-lucide="rocket" class="w-4 h-4"></i></div>
-            <div class="tilt tl-card glass rounded-2xl p-7" data-glow="#00f2fe">
-              <div class="flex flex-wrap items-center gap-3 mb-1">
-                <span class="font-mono text-[10px] tracking-widest px-2.5 py-1 rounded-md bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30">MISSION: ACTIVE</span>
-                <span class="font-mono text-xs text-slate-500">01/04/2025 — Attuale</span>
-              </div>
-              <h3 class="text-2xl font-bold text-white mt-2">Software Engineer</h3>
-              <p class="font-mono text-sm text-neon-blue mt-0.5">Fincons Group — Bari, Italia</p>
-
-              <div class="grid sm:grid-cols-3 gap-3 mt-5 font-mono text-center">
-                <div class="metric"><span class="metric-value" data-count="2">0</span><span class="metric-label">TENANT OTT (ITA · ESP)</span></div>
-                <div class="metric"><span class="metric-value" data-count="100" data-suffix="%">0</span><span class="metric-label">API DOCUMENTATE — OPENAPI 3.0</span></div>
-                <div class="metric"><span class="metric-value" data-count="24" data-suffix="/7">0</span><span class="metric-label">PIATTAFORMA STREAMING HIGH-TRAFFIC</span></div>
-              </div>
-
-              <ul class="mt-5 space-y-2.5 text-slate-400 text-sm leading-relaxed list-none">
-                <li class="log-li">Progettazione e sviluppo di microservizi backend in <strong class="text-slate-200">Java</strong> e framework <strong class="text-slate-200">Spring</strong> per l'ecosistema OTT di Mediaset (<strong class="text-slate-200">Infinity</strong>) per i Tenant ITA ed ESP.</li>
-                <li class="log-li">Gestione, versionamento e documentazione di API RESTful tramite <strong class="text-slate-200">OpenAPI 3.0 / Swagger</strong> per assicurare coerenza, retrocompatibilità e integrazione client.</li>
-                <li class="log-li">Analisi, isolamento e risoluzione di bug complessi in scenari distribuiti ad alto traffico.</li>
-                <li class="log-li">Testing manuale e di integrazione avanzato tramite Swagger e curl.</li>
-              </ul>
-
-              <div class="mt-5 flex flex-wrap gap-2">
-                <span class="chip chip-cyan">Java</span><span class="chip chip-cyan">Spring Boot</span><span class="chip chip-cyan">Spring Web</span><span class="chip chip-cyan">Spring Cloud</span><span class="chip chip-cyan">Spring Data JPA</span><span class="chip chip-cyan">Spring Security</span><span class="chip chip-violet">Redis</span><span class="chip chip-violet">DynamoDB</span><span class="chip chip-violet">AWS SQS</span><span class="chip chip-violet">AWS SNS</span><span class="chip chip-violet">AWS S3</span><span class="chip chip-violet">AWS Parameter Store</span><span class="chip chip-blue">CVP</span><span class="chip chip-blue">ThePlatform (MPX)</span><span class="chip chip-blue">Git / GitHub</span><span class="chip chip-blue">Maven</span><span class="chip chip-blue">Postman</span><span class="chip chip-blue">JIRA / Confluence</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="tl-item reveal">
-            <div class="tl-node"><i data-lucide="plane" class="w-4 h-4"></i></div>
-            <div class="tilt tl-card glass rounded-2xl p-7" data-glow="#4facfe">
-              <div class="flex flex-wrap items-center gap-3 mb-1">
-                <span class="font-mono text-[10px] tracking-widest px-2.5 py-1 rounded-md bg-neon-blue/10 text-neon-blue border border-neon-blue/30">MISSION: COMPLETED</span>
-                <span class="font-mono text-xs text-slate-500">03/06/2024 — 01/09/2024</span>
-              </div>
-              <h3 class="text-xl font-bold text-white mt-2">Commesso di negozio specializzato</h3>
-              <p class="font-mono text-sm text-neon-blue mt-0.5">Lagardère Travel Retail — Aeroporto Bari-Palese, Italia</p>
-              <p class="mt-3 text-slate-400 text-sm leading-relaxed">
-                Comunicazione quotidiana in inglese con clienti internazionali, gestione duty-free,
-                operazioni di cassa con aperture/chiusure e assistenza a viaggiatori di diverse nazionalità.
-              </p>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="chip chip-blue">English Fluency</span><span class="chip chip-blue">Customer Care</span><span class="chip chip-blue">Contesto Internazionale</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="tl-item reveal">
-            <div class="tl-node"><i data-lucide="globe" class="w-4 h-4"></i></div>
-            <div class="tilt tl-card glass rounded-2xl p-7" data-glow="#4facfe">
-              <div class="flex flex-wrap items-center gap-3 mb-1">
-                <span class="font-mono text-[10px] tracking-widest px-2.5 py-1 rounded-md bg-neon-blue/10 text-neon-blue border border-neon-blue/30">MISSION: COMPLETED — ERASMUS+ IRLANDA</span>
-                <span class="font-mono text-xs text-slate-500">03/09/2022 — 03/10/2022</span>
-              </div>
-              <h3 class="text-xl font-bold text-white mt-2">Commesso di negozio specializzato</h3>
-              <p class="font-mono text-sm text-neon-blue mt-0.5">OMG @Zhivago — Galway, Irlanda</p>
-              <p class="mt-3 text-slate-400 text-sm leading-relaxed">
-                Esperienza lavorativa all'estero (programma Erasmus+ Inclusion): accoglienza clienti e comunicazione
-                fluente in inglese in un ambiente madrelingua.
-              </p>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="chip chip-blue">English Immersion</span><span class="chip chip-blue">Erasmus+</span><span class="chip chip-blue">Adattabilità</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== EDUCATION ===== -->
-    <section id="education" class="cv-section py-20" data-cv-section="education">
-      <div class="mx-auto max-w-6xl px-6">
-        <div class="section-head reveal">
-          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">02 // ACADEMIC PATH</span>
-          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Percorso di Studi</h2>
-          <p class="mt-3 text-slate-500 max-w-2xl">Formazione tecnica e accademica — dal diploma alla laurea in Informatica e AI.</p>
-        </div>
-
-        <div class="timeline mt-14 relative">
-          <article class="tl-item reveal">
-            <div class="tl-node tl-node-active"><i data-lucide="graduation-cap" class="w-4 h-4"></i></div>
-            <div class="tilt tl-card glass rounded-2xl p-7" data-glow="#4facfe">
-              <div class="flex flex-wrap items-center gap-3 mb-1">
-                <span class="font-mono text-[10px] tracking-widest px-2.5 py-1 rounded-md bg-neon-blue/10 text-neon-blue border border-neon-blue/30">EDUCATION: IN PROGRESS</span>
-                <span class="font-mono text-xs text-slate-500">06/2026 — In corso</span>
-              </div>
-              <h3 class="text-2xl font-bold text-white mt-2">Laurea Triennale — Ingegneria Informatica e AI</h3>
-              <p class="font-mono text-sm text-neon-blue mt-0.5">Università degli Studi Guglielmo Marconi — Roma</p>
-              <p class="mt-4 text-slate-400 text-sm leading-relaxed">
-                Percorso iniziato presso il <span class="text-slate-200">Politecnico di Bari</span> (Ingegneria Informatica
-                e dell'Automazione) e proseguito presso l'Università Telematica Guglielmo Marconi tramite trasferimento
-                carriera con convalida CFU. Focus su sviluppo software, Intelligenza Artificiale &amp; Data Science,
-                sistemi, architetture e reti.
-              </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span class="chip chip-blue">Algoritmi &amp; Strutture Dati</span><span class="chip chip-blue">Programmazione OO</span><span class="chip chip-blue">Basi di Dati e di Conoscenza</span><span class="chip chip-violet">Intelligenza Artificiale</span><span class="chip chip-violet">Machine Learning</span><span class="chip chip-violet">Reti Logiche &amp; Neurali</span><span class="chip chip-violet">Laboratorio di AI</span><span class="chip chip-violet">AI Innovation Manager</span><span class="chip chip-blue">Calcolatori &amp; Sistemi Operativi</span><span class="chip chip-blue">Reti e Internet</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="tl-item reveal">
-            <div class="tl-node"><i data-lucide="award" class="w-4 h-4"></i></div>
-            <div class="tilt tl-card glass rounded-2xl p-7" data-glow="#7f00ff">
-              <div class="flex flex-wrap items-center gap-3 mb-1">
-                <span class="font-mono text-[10px] tracking-widest px-2.5 py-1 rounded-md bg-neon-violet/10 text-[#b366ff] border border-neon-violet/40">COMPLETED — 100/100 CON LODE</span>
-                <span class="font-mono text-xs text-slate-500">09/2018 — 06/2023</span>
-              </div>
-              <h3 class="text-2xl font-bold text-white mt-2">Diploma — Informatica e Telecomunicazioni</h3>
-              <p class="font-mono text-sm text-neon-blue mt-0.5">IISS Volta De Gemmis — Bitonto</p>
-              <p class="mt-4 text-slate-400 text-sm leading-relaxed">
-                Focus: progettazione di sistemi e reti complesse (TCP/IP, UDP, HTTP/S, FTP, SMTP/IMAP/POP3, DNS, DHCP;
-                LAN, WAN, VPN, VLAN, routing), programmazione multi-linguaggio e sviluppo web.
-              </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span class="chip chip-violet">Reti &amp; Routing (TCP/IP)</span><span class="chip chip-violet">Java</span><span class="chip chip-violet">C / C++</span><span class="chip chip-violet">Python</span><span class="chip chip-violet">PHP</span><span class="chip chip-violet">JavaScript / HTML / CSS</span><span class="chip chip-violet">Assembly x86</span><span class="chip chip-violet">SQL &amp; Database</span><span class="chip chip-violet">VM Ubuntu / Kali Linux</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== PROJECTS ===== -->
-    <section id="projects" class="cv-section py-20" data-cv-section="projects">
-      <div class="mx-auto max-w-6xl px-6">
-        <div class="section-head reveal">
-          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">03 // SELECTED PROJECTS</span>
-          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Progetti</h2>
-          <p class="mt-3 text-slate-500 max-w-2xl">Prodotti digitali e software realizzati — demo live e repository pubbliche.</p>
-        </div>
-
-        <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-
-          <!-- Corner Pub -->
-          <article class="tilt bento reveal project-card" data-glow="#00f2fe">
-            <div class="bento-inner p-7 flex flex-col h-full">
-              <div class="flex items-center gap-3 mb-4">
-                <div class="icon-chip text-neon-cyan"><i data-lucide="utensils" class="w-5 h-5"></i></div>
-                <div>
-                  <span class="font-mono text-[10px] tracking-widest text-neon-cyan">LIVE DEMO</span>
-                  <h3 class="font-bold text-lg text-white leading-tight">Corner Pub Giovinazzo</h3>
-                </div>
-              </div>
-              <p class="text-slate-400 text-sm leading-relaxed flex-1">
-                Anteprima digitale / sito ufficiale per <strong class="text-slate-200">Corner Hamburgeria</strong> —
-                panini, birre artigianali e prenotazioni tavolo/eventi. Menù, promozioni, mappa, gestione allergeni
-                e flusso GDPR per le prenotazioni. Deploy su Render.
-              </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span class="chip chip-cyan">Web App</span>
-                <span class="chip chip-cyan">Prenotazioni</span>
-                <span class="chip chip-blue">Render</span>
-                <span class="chip chip-blue">Full-stack</span>
-              </div>
-              <a href="https://cornerpubgiovinazzo.onrender.com" target="_blank" rel="noopener noreferrer"
-                 class="magnetic btn-neon-solid mt-6 w-full text-center px-4 py-3 rounded-xl font-semibold text-sm" data-sfx>
-                <i data-lucide="external-link" class="w-4 h-4 inline -mt-0.5 mr-1"></i> Apri anteprima digitale
-              </a>
-            </div>
-          </article>
-
-          <!-- Smart Energy AI -->
-          <article class="tilt bento reveal project-card" data-glow="#7f00ff" style="--reveal-delay:.1s">
-            <div class="bento-inner p-7 flex flex-col h-full">
-              <div class="flex items-center gap-3 mb-4">
-                <div class="icon-chip text-neon-violet"><i data-lucide="leaf" class="w-5 h-5"></i></div>
-                <div>
-                  <span class="font-mono text-[10px] tracking-widest text-[#b366ff]">OPEN SOURCE</span>
-                  <h3 class="font-bold text-lg text-white leading-tight">Smart Energy AI</h3>
-                </div>
-              </div>
-              <p class="text-slate-400 text-sm leading-relaxed flex-1">
-                Piattaforma <strong class="text-slate-200">Smart Sustainability</strong> per monitoraggio e ottimizzazione
-                dei consumi energetici domestici. Backend Spring Boot, simulazione fotovoltaica realistica,
-                standby detection e assistente <strong class="text-slate-200">Smart Home AI</strong> con consigli
-                proattivi. Dashboard interattiva con grafici 24h.
-              </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span class="chip chip-violet">Java 21</span>
-                <span class="chip chip-violet">Spring Boot 3</span>
-                <span class="chip chip-violet">PostgreSQL</span>
-                <span class="chip chip-cyan">AI Assistant</span>
-                <span class="chip chip-blue">Vanilla JS</span>
-              </div>
-              <a href="https://github.com/sanfelix2004/smart-energy-ai-public" target="_blank" rel="noopener noreferrer"
-                 class="magnetic btn-neon mt-6 w-full text-center px-4 py-3 rounded-xl font-mono text-sm" data-sfx>
-                <i data-lucide="github" class="w-4 h-4 inline -mt-0.5 mr-1"></i> Vedi su GitHub
-              </a>
-            </div>
-          </article>
-
-          <!-- HACCP Software -->
-          <article class="tilt bento reveal project-card" data-glow="#4facfe" style="--reveal-delay:.2s">
-            <div class="bento-inner p-7 flex flex-col h-full">
-              <div class="flex items-center gap-3 mb-4">
-                <div class="icon-chip text-neon-blue"><i data-lucide="clipboard-check" class="w-5 h-5"></i></div>
-                <div>
-                  <span class="font-mono text-[10px] tracking-widest text-neon-blue">IN PROGRESS · SWIFT</span>
-                  <h3 class="font-bold text-lg text-white leading-tight">HACCP Software</h3>
-                </div>
-              </div>
-              <p class="text-slate-400 text-sm leading-relaxed flex-1">
-                App iOS professionale per ristoranti e attività alimentari: checklist HACCP, reportistica,
-                dashboard analytics, tracciabilità e gestione utenti. Architettura modulare feature-based in
-                <strong class="text-slate-200">Swift</strong> (App · Core · Features · Resources).
-              </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <span class="chip chip-blue">Swift</span>
-                <span class="chip chip-blue">iOS</span>
-                <span class="chip chip-cyan">HACCP</span>
-                <span class="chip chip-violet">In Progress</span>
-                <span class="chip chip-blue">Modular Architecture</span>
-              </div>
-              <a href="https://github.com/sanfelix2004/haccp-software" target="_blank" rel="noopener noreferrer"
-                 class="magnetic btn-neon mt-6 w-full text-center px-4 py-3 rounded-xl font-mono text-sm" data-sfx>
-                <i data-lucide="github" class="w-4 h-4 inline -mt-0.5 mr-1"></i> Vedi su GitHub
-              </a>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== TECH STACK ===== -->
-    <section id="stack" class="cv-section py-20" data-cv-section="stack">
-      <div class="mx-auto max-w-6xl px-6">
-        <div class="section-head reveal">
-          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">04 // SYSTEM CAPABILITIES</span>
-          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Tech Stack Matrix</h2>
-          <p class="mt-3 text-slate-500 max-w-2xl">Moduli tecnologici caricati e operativi. Passa il cursore sulle celle per l'analisi HUD.</p>
-        </div>
-
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-6 gap-5">
-          <div class="tilt bento md:col-span-4 reveal" data-glow="#00f2fe">
-            <div class="bento-inner p-7">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="icon-chip text-neon-cyan"><i data-lucide="server" class="w-5 h-5"></i></div>
-                <h3 class="font-bold text-lg text-white">Backend &amp; Core</h3>
-                <span class="ml-auto font-mono text-[10px] text-neon-cyan/70 tracking-widest">MODULE: PRIMARY</span>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="chip chip-cyan">Java</span>
-                <span class="chip chip-cyan">Spring Boot</span>
-                <span class="chip chip-cyan">Spring Cloud</span>
-                <span class="chip chip-cyan">Spring Data JPA</span>
-                <span class="chip chip-cyan">Spring Security</span>
-                <span class="chip chip-cyan">OpenAPI 3.0 / REST API</span>
-                <span class="chip chip-cyan">Maven</span>
-                <span class="chip chip-cyan">C</span>
-                <span class="chip chip-cyan">C++</span>
-                <span class="chip chip-cyan">C#</span>
-                <span class="chip chip-cyan">Python</span>
-              </div>
-              <div class="mt-6 skill-bars space-y-3 font-mono text-[11px]">
-                <div><div class="flex justify-between text-slate-500 mb-1"><span>JAVA / SPRING ECOSYSTEM</span><span class="text-neon-cyan">██ 92%</span></div><div class="bar"><span style="--w:92%"></span></div></div>
-                <div><div class="flex justify-between text-slate-500 mb-1"><span>REST API DESIGN / OPENAPI</span><span class="text-neon-cyan">██ 88%</span></div><div class="bar"><span style="--w:88%"></span></div></div>
-                <div><div class="flex justify-between text-slate-500 mb-1"><span>C / C++ / PYTHON</span><span class="text-neon-cyan">██ 74%</span></div><div class="bar"><span style="--w:74%"></span></div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tilt bento md:col-span-2 md:row-span-2 reveal" data-glow="#7f00ff" style="--reveal-delay:.1s">
-            <div class="bento-inner p-7 h-full">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="icon-chip text-neon-violet"><i data-lucide="cloud" class="w-5 h-5"></i></div>
-                <h3 class="font-bold text-lg text-white">Cloud, Database<br/>&amp; Infrastruttura</h3>
-              </div>
-              <ul class="space-y-3 font-mono text-[12.5px] text-slate-400">
-                <li class="stack-li"><i data-lucide="box" class="w-3.5 h-3.5 text-neon-violet"></i> AWS SQS · SNS · S3</li>
-                <li class="stack-li"><i data-lucide="database" class="w-3.5 h-3.5 text-neon-violet"></i> Amazon DynamoDB</li>
-                <li class="stack-li"><i data-lucide="key-round" class="w-3.5 h-3.5 text-neon-violet"></i> AWS Parameter Store</li>
-                <li class="stack-li"><i data-lucide="zap" class="w-3.5 h-3.5 text-neon-violet"></i> Redis</li>
-                <li class="stack-li"><i data-lucide="database-zap" class="w-3.5 h-3.5 text-neon-violet"></i> PostgreSQL · SQL &amp; NoSQL</li>
-                <li class="stack-li"><i data-lucide="container" class="w-3.5 h-3.5 text-neon-violet"></i> Docker</li>
-                <li class="stack-li"><i data-lucide="terminal" class="w-3.5 h-3.5 text-neon-violet"></i> Linux (Ubuntu / Kali)</li>
-              </ul>
-              <div class="mt-6 radar-wrap">
-                <canvas id="radar-canvas" width="260" height="260" class="mx-auto"></canvas>
-              </div>
-            </div>
-          </div>
-
-          <div class="tilt bento md:col-span-2 reveal" data-glow="#4facfe" style="--reveal-delay:.2s">
-            <div class="bento-inner p-7">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="icon-chip text-neon-blue"><i data-lucide="smartphone" class="w-5 h-5"></i></div>
-                <h3 class="font-bold text-lg text-white">Frontend &amp; Mobile</h3>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="chip chip-blue">JavaScript</span>
-                <span class="chip chip-blue">TypeScript</span>
-                <span class="chip chip-blue">HTML5 / CSS3</span>
-                <span class="chip chip-blue">PHP</span>
-                <span class="chip chip-blue">Angular</span>
-                <span class="chip chip-blue">React</span>
-                <span class="chip chip-blue">Swift / iOS</span>
-                <span class="chip chip-blue">Flutter &amp; Dart</span>
-                <span class="chip chip-blue">Android App</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="tilt bento md:col-span-2 reveal" data-glow="#00f2fe" style="--reveal-delay:.25s">
-            <div class="bento-inner p-7">
-              <div class="flex items-center gap-3 mb-5">
-                <div class="icon-chip text-neon-cyan"><i data-lucide="git-branch" class="w-5 h-5"></i></div>
-                <h3 class="font-bold text-lg text-white">Architecture &amp; Tools</h3>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span class="chip chip-cyan">Microservizi</span>
-                <span class="chip chip-cyan">Sistemi Distribuiti</span>
-                <span class="chip chip-cyan">Git / GitHub</span>
-                <span class="chip chip-cyan">Postman</span>
-                <span class="chip chip-cyan">Swagger</span>
-                <span class="chip chip-cyan">JIRA / Confluence</span>
-                <span class="chip chip-cyan">CVP</span>
-                <span class="chip chip-cyan">ThePlatform (MPX)</span>
-                <span class="chip chip-violet">AI Generativa</span>
-                <span class="chip chip-violet">Machine Learning</span>
-                <span class="chip chip-violet">Cybersecurity base (Kali)</span>
-                <span class="chip chip-violet">Matlab</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== CERTIFICATIONS ===== -->
-    <section id="certs" class="cv-section py-20" data-cv-section="certs">
-      <div class="mx-auto max-w-6xl px-6">
-        <div class="section-head reveal">
-          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">05 // VERIFIED CREDENTIALS</span>
-          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Certificazioni</h2>
-          <p class="mt-3 text-slate-500 max-w-2xl">Credenziali verificate — lingue, networking e cybersecurity.</p>
-        </div>
-
-        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 font-mono text-[12px] reveal">
-          <div class="cert-card"><i data-lucide="graduation-cap" class="w-4 h-4 text-neon-cyan"></i> Cambridge English B2</div>
-          <div class="cert-card"><i data-lucide="code-2" class="w-4 h-4 text-neon-cyan"></i> Cisco CPA: Programming Essentials in C++</div>
-          <div class="cert-card"><i data-lucide="shield-check" class="w-4 h-4 text-neon-cyan"></i> Cisco Introduction to Cybersecurity</div>
-          <div class="cert-card"><i data-lucide="terminal-square" class="w-4 h-4 text-neon-cyan"></i> Cisco NDG Linux Unhatched</div>
-          <div class="cert-card"><i data-lucide="network" class="w-4 h-4 text-neon-cyan"></i> Cisco Introduction to Packet Tracer</div>
-          <div class="cert-card"><i data-lucide="lightbulb" class="w-4 h-4 text-neon-cyan"></i> Cisco Entrepreneurship</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== CONSOLE ===== -->
-    <section id="console" class="cv-section py-20" data-cv-section="console">
-      <div class="mx-auto max-w-4xl px-6">
-        <div class="section-head reveal text-center">
-          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">06 // DIRECT ACCESS</span>
-          <h2 class="mt-2 text-4xl sm:text-5xl font-black shimmer-text inline-block">Console Interattiva</h2>
-          <p class="mt-3 text-slate-500">Interroga direttamente il sistema. Digita <code class="text-neon-cyan">help</code> per la lista dei comandi.</p>
-        </div>
-
-        <div class="terminal-window glass rounded-2xl overflow-hidden mt-10 reveal">
-          <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-white/[0.02]">
-            <span class="w-3 h-3 rounded-full bg-[#ff5f57]"></span>
-            <span class="w-3 h-3 rounded-full bg-[#febc2e]"></span>
-            <span class="w-3 h-3 rounded-full bg-[#28c840]"></span>
-            <span class="ml-3 font-mono text-[11px] text-slate-500 tracking-widest">guest@sanfelice.dev: ~/console — zsh</span>
-            <span class="ml-auto font-mono text-[10px] text-neon-cyan/60 tracking-widest hidden sm:inline">ENCRYPTED CHANNEL ●</span>
-          </div>
-          <div id="console-body" class="p-5 font-mono text-[13px] leading-relaxed h-[380px] overflow-y-auto cursor-text">
-            <div id="console-output"></div>
-            <div class="flex items-center gap-2 mt-1">
-              <span class="text-neon-cyan shrink-0">guest@sanfelice.dev:~$</span>
-              <div class="relative flex-1">
-                <input id="console-input" type="text" autocomplete="off" spellcheck="false"
-                       class="bg-transparent outline-none border-none w-full text-slate-100 caret-transparent font-mono text-[13px]" />
-                <span id="console-cursor" class="term-cursor absolute top-1/2 -translate-y-1/2 left-0"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== CONTACT ===== -->
-    <section id="contact" class="cv-section py-20 pb-32" data-cv-section="contact">
-      <div class="mx-auto max-w-4xl px-6 text-center">
-        <div class="glass rounded-3xl p-10 sm:p-14 reveal contact-panel" data-glow="#00f2fe">
-          <span class="font-mono text-xs tracking-[0.3em] text-neon-cyan">07 // ESTABLISH CONNECTION</span>
-          <h2 class="mt-3 text-4xl sm:text-5xl font-black shimmer-text inline-block">Inizializza il Contatto</h2>
-          <p class="mt-4 text-slate-400 max-w-xl mx-auto">
-            Disponibile per ruoli ad alto impatto su backend, cloud e sistemi distribuiti.
-            Canale diretto sempre operativo.
+          <p class="tags">
+            <span>Algoritmi</span><span>OOP</span><span>Basi di Dati</span><span>AI</span><span>Machine Learning</span>
+            <span>Reti Neurali</span><span>Sistemi Operativi</span><span>Reti e Internet</span>
           </p>
+        </article>
 
-          <div class="mt-9 flex flex-wrap justify-center gap-4">
-            <a href="mailto:sanfelicefrancesco004@gmail.com?subject=Opportunit%C3%A0%20professionale%20%E2%80%94%20High-Impact%20Role"
-               class="magnetic btn-neon-solid px-8 py-4 rounded-xl font-semibold" data-sfx>
-              <i data-lucide="mail" class="w-4 h-4 inline -mt-0.5 mr-1.5"></i> sanfelicefrancesco004@gmail.com
-            </a>
-            <button id="footer-download-cv" class="magnetic btn-neon px-8 py-4 rounded-xl font-mono text-sm" data-sfx>
-              <i data-lucide="file-down" class="w-4 h-4 inline -mt-0.5 mr-1.5"></i> download-cv
-            </button>
+        <article class="timeline-item reveal">
+          <div class="timeline-meta">
+            <span class="badge">100/100 con Lode</span>
+            <time>09/2018 — 06/2023</time>
           </div>
+          <h3>Diploma — Informatica e Telecomunicazioni</h3>
+          <p class="org">IISS Volta De Gemmis — Bitonto</p>
+          <p class="prose">
+            Reti e protocolli (TCP/IP, UDP, HTTP/S, DNS, DHCP, VLAN, routing), programmazione multi-linguaggio e sviluppo web.
+          </p>
+          <p class="tags">
+            <span>Java</span><span>C / C++</span><span>Python</span><span>PHP</span><span>JavaScript</span>
+            <span>SQL</span><span>Assembly x86</span><span>Linux</span>
+          </p>
+        </article>
+      </div>
+    </section>
 
-          <div class="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-2 font-mono text-xs text-slate-500">
-            <span><i data-lucide="map-pin" class="w-3.5 h-3.5 inline -mt-0.5 text-neon-cyan"></i> Giovinazzo (Bari), Italia</span>
-            <a href="tel:+393288826170" class="hover:text-neon-cyan transition-colors"><i data-lucide="phone" class="w-3.5 h-3.5 inline -mt-0.5 text-neon-cyan"></i> (+39) 328 882 6170</a>
-            <span><i data-lucide="languages" class="w-3.5 h-3.5 inline -mt-0.5 text-neon-cyan"></i> EN B2 — Cambridge</span>
-            <span><i data-lucide="signal" class="w-3.5 h-3.5 inline -mt-0.5 text-neon-cyan"></i> UPLINK: STABLE</span>
-          </div>
+    <!-- PROJECTS -->
+    <section id="projects" class="cv-section shell section" data-cv-section="projects">
+      <header class="section-head reveal">
+        <p class="section-index">03</p>
+        <div>
+          <h2>Progetti selezionati</h2>
+          <p class="section-lead">Lavori concreti: prodotto live, piattaforma AI energetica e app iOS in sviluppo.</p>
         </div>
+      </header>
 
-        <footer class="mt-14 font-mono text-[11px] text-slate-600 tracking-widest">
-          © 2026 FRANCESCO SANFELICE DI BAGNOLI — BUILT WITH <span class="text-neon-cyan">JAVA-GRADE PRECISION</span> &amp; VANILLA JS
-        </footer>
+      <div class="project-list">
+        <a class="project reveal" href="https://cornerpubgiovinazzo.onrender.com" target="_blank" rel="noopener noreferrer">
+          <div class="project-top">
+            <span class="badge badge-live">Live</span>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </div>
+          <h3>Corner Pub Giovinazzo</h3>
+          <p>
+            Anteprima digitale e sito ufficiale per Corner Hamburgeria: menù, promozioni,
+            prenotazioni tavolo/eventi, gestione allergeni e flusso privacy. Deploy su Render.
+          </p>
+          <p class="tags"><span>Web App</span><span>Prenotazioni</span><span>Full-stack</span><span>Render</span></p>
+        </a>
+
+        <a class="project reveal" href="https://github.com/sanfelix2004/smart-energy-ai-public" target="_blank" rel="noopener noreferrer">
+          <div class="project-top">
+            <span class="badge">Open source</span>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </div>
+          <h3>Smart Energy AI</h3>
+          <p>
+            Piattaforma Smart Sustainability per monitoraggio e ottimizzazione dei consumi energetici domestici.
+            Backend Spring Boot, simulazione fotovoltaica, standby detection e assistente Smart Home AI
+            con consigli proattivi e dashboard 24h.
+          </p>
+          <p class="tags"><span>Java 21</span><span>Spring Boot 3</span><span>PostgreSQL</span><span>AI Assistant</span></p>
+        </a>
+
+        <a class="project reveal" href="https://github.com/sanfelix2004/haccp-software" target="_blank" rel="noopener noreferrer">
+          <div class="project-top">
+            <span class="badge">In progress · Swift</span>
+            <span class="project-arrow" aria-hidden="true">↗</span>
+          </div>
+          <h3>HACCP Software</h3>
+          <p>
+            App iOS per ristoranti e attività alimentari: checklist HACCP, reportistica, dashboard analytics
+            e tracciabilità. Architettura modulare feature-based in Swift.
+          </p>
+          <p class="tags"><span>Swift</span><span>iOS</span><span>HACCP</span><span>Modular</span></p>
+        </a>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="cv-section shell section" data-cv-section="skills">
+      <header class="section-head reveal">
+        <p class="section-index">04</p>
+        <div>
+          <h2>Competenze tecniche</h2>
+          <p class="section-lead">Stack operativo, dal backend cloud-native al mobile.</p>
+        </div>
+      </header>
+
+      <div class="skill-grid">
+        <div class="skill-block reveal">
+          <h3>Backend &amp; Core</h3>
+          <ul>
+            <li>Java, Spring Boot, Spring Cloud, Spring Data JPA, Spring Security</li>
+            <li>OpenAPI 3.0 / REST API, Maven</li>
+            <li>C, C++, C#, Python</li>
+          </ul>
+        </div>
+        <div class="skill-block reveal">
+          <h3>Cloud &amp; Infrastruttura</h3>
+          <ul>
+            <li>AWS SQS, SNS, S3, DynamoDB, Parameter Store</li>
+            <li>Redis, PostgreSQL, SQL &amp; NoSQL</li>
+            <li>Docker, Linux (Ubuntu / Kali)</li>
+          </ul>
+        </div>
+        <div class="skill-block reveal">
+          <h3>Frontend &amp; Mobile</h3>
+          <ul>
+            <li>JavaScript, TypeScript, HTML5 / CSS3, PHP</li>
+            <li>Angular, React</li>
+            <li>Swift / iOS, Flutter &amp; Dart, Android</li>
+          </ul>
+        </div>
+        <div class="skill-block reveal">
+          <h3>Architettura &amp; Tooling</h3>
+          <ul>
+            <li>Microservizi, sistemi distribuiti</li>
+            <li>Git / GitHub, Postman, Swagger, JIRA / Confluence</li>
+            <li>AI generativa, Machine Learning, Matlab</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTS -->
+    <section id="certs" class="cv-section shell section" data-cv-section="certs">
+      <header class="section-head reveal">
+        <p class="section-index">05</p>
+        <div>
+          <h2>Certificazioni</h2>
+          <p class="section-lead">Credenziali verificate su lingue, networking e cybersecurity.</p>
+        </div>
+      </header>
+
+      <ul class="cert-list reveal">
+        <li>Cambridge English B2</li>
+        <li>Cisco CPA: Programming Essentials in C++</li>
+        <li>Cisco Introduction to Cybersecurity</li>
+        <li>Cisco NDG Linux Unhatched</li>
+        <li>Cisco Introduction to Packet Tracer</li>
+        <li>Cisco Entrepreneurship</li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="cv-section shell section contact-section" data-cv-section="contact">
+      <header class="section-head reveal">
+        <p class="section-index">06</p>
+        <div>
+          <h2>Contatti</h2>
+          <p class="section-lead">Aperto a opportunità su backend, cloud e sistemi distribuiti.</p>
+        </div>
+      </header>
+
+      <div class="contact-panel reveal">
+        <a class="contact-link" href="mailto:sanfelicefrancesco004@gmail.com">sanfelicefrancesco004@gmail.com</a>
+        <a class="contact-link" href="tel:+393288826170">(+39) 328 882 6170</a>
+        <p class="contact-place">Giovinazzo (Bari), Italia · EN B2 Cambridge</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:sanfelicefrancesco004@gmail.com?subject=Opportunit%C3%A0%20professionale">Invia email</a>
+          <a class="btn btn-secondary" href="assets/SanfelicediBagnoliFrancesco-CV-ITA.pdf" download>Scarica CV</a>
+        </div>
       </div>
     </section>
   </main>
+
+  <footer class="site-footer shell">
+    <p>© 2026 Francesco Sanfelice di Bagnoli</p>
+    <p>Software Engineer · Backend &amp; Cloud Systems</p>
+  </footer>
 
   <script src="js/app.js"></script>
 </body>
